@@ -1,20 +1,15 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import MapView from 'react-native-maps';
+import MappingComponent from './Components/mapComponent.js';
+import ItemCard from './Components/itemCard.js';
 
 export default function App() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <MapView style={{
-        width: "100%",
-        height: "100%",
-      }} />
-    </View>
+    <React.Fragment>
+      <MappingComponent/>
+      <ItemCard sellerName="Joe" item="Potato"/>
+      <ItemCard sellerName="Mama" item="Cucumber"/>
+    </React.Fragment>
   );
 }
