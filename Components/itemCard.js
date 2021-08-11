@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View,ScrollView, Text } from 'react-native';
 
 function ItemCard(props) {
   return(
-    <Text>
-    <Text>Sold by: {props.sellerName}</Text>
-    {"\n"}
-    <Text>They are selling: {props.item}</Text>
-    </Text>
+    <View style={flexDirection='row'}>
+      <ScrollView horizontal>
+
+        <View>
+          <Text>Sold by: {props.sellerName}</Text>
+          <Text>They are selling: {props.item}</Text>
+        </View>
+        </ScrollView>
+    </View>
   );
 }
 export default ItemCard;
