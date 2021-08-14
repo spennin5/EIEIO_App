@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import * as SecureStore from 'expo-secure-store';
 import { View, Text, TextInput, Button} from 'react-native';
 
 function LoginPage({navigation}){
@@ -15,11 +15,15 @@ function LoginPage({navigation}){
       <Button
       title="Submit"
       onPress={() =>
-        navigation.navigate('Items')
+        {save("loggedOnBool","loggedIn");}
+
+        //navigation.navigate('Items')
       }
     />
     </View>
   );
 }
-
+async function save(key, value) {
+  await SecureStore.setItemAsync(key, value);
+}
 export default LoginPage;
