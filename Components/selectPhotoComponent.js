@@ -27,27 +27,23 @@ export default function SelectPhoto(){
 
   if (selectedImage !== null) {
     return (
-      <View style={styles.container}>
+      <View >
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
         <TouchableOpacity onPress={clearImageAsync} style={styles.button}>
-          <Text style={styles.buttonText}>Clear</Text>
+          <Text style={styles.buttonText}>Clear Image</Text>
         </TouchableOpacity>
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
+    <View>
       <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} />
-      <Text style={styles.instructions}>
-        To share a photo from your phone with a friend, just press the button below!
-      </Text>
+
 
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-        <Text style={styles.buttonText}>Pick a photo</Text>
+        <Text style={styles.buttonText}>Pick a Photo of Your Item</Text>
       </TouchableOpacity>
-      <ItemCard sellerName="Joe" item="Potato"/>
-      <ItemCard sellerName="Mama" item="Cucumber"/>
     </View>
     //<React.Fragment>
       //<MappingComponent/>

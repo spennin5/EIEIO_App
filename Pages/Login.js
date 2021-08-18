@@ -5,6 +5,10 @@ import { View, Text, TextInput, Button} from 'react-native';
 function LoginPage({navigation}){
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  function validateUser(){
+    //In the future we need to validate that the username and password are valid against a DB
+    navigation.navigate("Home");
+  }
   return(
     <View>
       <Text>Username: </Text>
@@ -15,11 +19,17 @@ function LoginPage({navigation}){
       <Button
       title="Submit"
       onPress={() =>
-        {save("loggedOnBool","loggedIn");}
+        {save("loggedOnBool","loggedIn");
+        validateUser();
+        }
 
         //navigation.navigate('Items')
       }
-    />
+      />
+      <Button
+      title = "Sign Up"
+      onPress={() => navigation.navigate('SignUp')}
+      />
     </View>
   );
 }
