@@ -8,11 +8,11 @@ import MappingComponent from './Components/mapComponent.js';
 import ItemCard from './Components/itemCard.js';
 import LoginPage from './Pages/Login.js';
 import SignUpPage from './Pages/SignUp.js';
-import HomePage from './Pages/Home.js';
+import SellerHomePage from './Pages/SellerHome.js';
+import BuyerHomePage from './Pages/BuyerHome.js';
 import NewItemPage from './Pages/NewItem.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import * as SecureStore from 'expo-secure-store';
 import {AuthContext} from './Components/Context.js';
 
 const Stack = createStackNavigator();
@@ -22,16 +22,30 @@ export default function App() {
   const [isSeller, setIsSeller] = useState(false);
 
   if(isLoggedIn){
-    return(
-      <AuthContext.Provider value = {{isLoggedIn:[isLoggedIn,setIsLoggedIn],isSeller:[isSeller,setIsSeller]}}>
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen name = "Home" component = {HomePage}/>
-              <Stack.Screen name = "NewItem" component = {NewItemPage}/>
-            </Stack.Navigator>
-          </NavigationContainer>
-      </AuthContext.Provider>
-    );
+    if(isSeller){
+      return(
+        <AuthContext.Provider value = {{isLoggedIn:[isLoggedIn,setIsLoggedIn],isSeller:[isSeller,setIsSeller]}}>
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen name = "SellerHome" component = {SellerHomePage}/>
+                <Stack.Screen name = "NewItem" component = {NewItemPage}/>
+              </Stack.Navigator>
+            </NavigationContainer>
+        </AuthContext.Provider>
+      );
+    }
+    if(!isSeller){
+      return(
+        <AuthContext.Provider value = {{isLoggedIn:[isLoggedIn,setIsLoggedIn],isSeller:[isSeller,setIsSeller]}}>
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen name = "BuyerHome" component = {BuyerHomePage}/>
+
+              </Stack.Navigator>
+            </NavigationContainer>
+        </AuthContext.Provider>
+      );
+    }
   }
   if(!isLoggedIn){
     return(

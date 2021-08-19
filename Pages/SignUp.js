@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { View, Text, TextInput, Button} from 'react-native';
-import {useState} from 'react'
+import {useState} from 'react';
+import {Picker} from '@react-native-picker/picker';
 export default function SignUp({navigation}){
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [passMatch,setPassMatch] = React.useState(false);
+  const [selectedUserType, setSelectedUserType] = useState('Buyer');
   function ValidatePassMatch(){
     const pass1 = password;
     const pass2 = confirmPassword;
@@ -15,7 +17,7 @@ export default function SignUp({navigation}){
         navigation.navigate('Login')
       }
       else{
-        alert('password too short')
+        alert('Password Too Short')
       }
     }
     else{
@@ -33,7 +35,14 @@ export default function SignUp({navigation}){
       <Button title="Submit"
       onPress = {()=>ValidatePassMatch()}
       />
-
+      <Picker
+        selectedValue={selectedUserType}
+        onValueChange={(itemValue, itemIndex) =>
+          setSelectedUserType(itemValue)
+        }>
+        <Picker.Item label="Buyer" value="buyer" />
+        <Picker.Item label="Seller" value="seller" />
+      </Picker>
     </View>
   );
 }

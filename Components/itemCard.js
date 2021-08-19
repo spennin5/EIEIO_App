@@ -3,7 +3,7 @@ import { View,ScrollView, Text } from 'react-native';
 
 function ItemCard(props) {
   return(
-    <View style={flexDirection='row'}>
+    <View>
       <ScrollView horizontal>
 
         <View>
