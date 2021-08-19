@@ -7,8 +7,6 @@ import {useContext} from 'react';
 
 
 export default function Home({navigation}){
-  //const context = useContext(AuthContext);
-
   return(
     <View>
     <TopBar/>

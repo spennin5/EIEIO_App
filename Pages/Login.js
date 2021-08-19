@@ -5,21 +5,23 @@ import {AuthContext, UserContext} from '../Components/Context.js';
 import {useContext} from 'react';
 
 function LoginPage({navigation}){
-  const [isLoggedIn,setIsLoggedIn] = React.useContext(AuthContext);
-  const [isSeller,setIsSeller] = React.useContext(UserContext);
+  const { isLoggedIn, isSeller } = React.useContext(AuthContext);
+  const [isLoggedInVal,setIsLoggedInVal] = isLoggedIn;
+  const [isSellerVal,setIsSellerVal] = isSeller;
+
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   function validateUser(){
     if(username=="buyer"&&password=="buyer"){
-      setIsSeller(false);
+      setIsSellerVal(false);
       //In the future we need to validate that the username and password are valid against a DB
-      setIsLoggedIn('true');
+      setIsLoggedInVal('true');
       navigation.navigate("Home");
     }
     if(username=="seller"&&password=="seller"){
-      //setIsSeller(true);
+      setIsSellerVal(true);
       //In the future we need to validate that the username and password are valid against a DB
-      setIsLoggedIn('true');
+      setIsLoggedInVal('true');
       navigation.navigate("Home");
     }
 
