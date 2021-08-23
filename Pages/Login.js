@@ -3,6 +3,7 @@ import * as SecureStore from 'expo-secure-store';
 import { View, Text, TextInput, Button} from 'react-native';
 import {AuthContext, UserContext} from '../Components/Context.js';
 import {useContext} from 'react';
+import {authenticateUsers} from '../Components/DataConnector.js';
 
 function LoginPage({navigation}){
   const { isLoggedIn, isSeller } = React.useContext(AuthContext);
@@ -12,6 +13,7 @@ function LoginPage({navigation}){
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   function validateUser(){
+    authenticateUsers();
     if(username=="buyer"&&password=="buyer"){
       setIsSellerVal(false);
       //In the future we need to validate that the username and password are valid against a DB

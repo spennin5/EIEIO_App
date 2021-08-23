@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, TextInput, Button} from 'react-native';
 import {useState} from 'react';
 import {Picker} from '@react-native-picker/picker';
+import {User} from '../Components/DataConnector.js';
 export default function SignUp({navigation}){
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -13,7 +14,9 @@ export default function SignUp({navigation}){
     const pass2 = confirmPassword;
     const match = pass1 === pass2;
     if(match){
-      if(pass1.length > 4){
+      if(pass1.length > 0){
+        let user = new User(username,password,"",11111,selectedUserType);
+        user.saveUser();
         navigation.navigate('Login')
       }
       else{
