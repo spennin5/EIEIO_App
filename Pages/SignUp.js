@@ -15,14 +15,18 @@ export default function SignUp({navigation}){
     const match = pass1 === pass2;
     if(match){
       if(pass1.length > 0){
+        //Temporary dummy data to make and store a user
         let user = new User(username,password,"",11111,selectedUserType);
         user.saveUser();
+        //Return to login page
         navigation.navigate('Login')
       }
+      //Error check
       else{
         alert('Password Too Short')
       }
     }
+    //Error check
     else{
       alert('Passwords Dont Match')
     }

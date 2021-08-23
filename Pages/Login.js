@@ -6,10 +6,13 @@ import {useContext} from 'react';
 import {authenticateUsers} from '../Components/DataConnector.js';
 
 function LoginPage({navigation}){
+  //Context is used to pass variables down to other pages and back up.
+  //In this case, AuthContext passes between App.js and Login.js
   const { isLoggedIn, isSeller } = React.useContext(AuthContext);
   const [isLoggedInVal,setIsLoggedInVal] = isLoggedIn;
+  //Check if user is buyer or seller
   const [isSellerVal,setIsSellerVal] = isSeller;
-
+  //Used for validtion
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   function validateUser(){
@@ -18,13 +21,13 @@ function LoginPage({navigation}){
       setIsSellerVal(false);
       //In the future we need to validate that the username and password are valid against a DB
       setIsLoggedInVal('true');
-      navigation.navigate("Home");
+      //navigation.navigate("Home");
     }
     if(username=="seller"&&password=="seller"){
       setIsSellerVal(true);
       //In the future we need to validate that the username and password are valid against a DB
       setIsLoggedInVal('true');
-      navigation.navigate("Home");
+      //navigation.navigate("Home");
     }
 
   }
