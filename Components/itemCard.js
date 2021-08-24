@@ -10,6 +10,7 @@ function ItemCard(props) {
         <View>
           <Text>Sold by: {props.sellerName}</Text>
           <Text>They are selling: {props.item}</Text>
+          <Text>Price: {props.price}</Text>
         </View>
         </ScrollView>
     </View>

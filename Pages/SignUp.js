@@ -16,7 +16,7 @@ export default function SignUp({navigation}){
     if(match){
       if(pass1.length > 0){
         //Temporary dummy data to make and store a user
-        let user = new User(username,password,"",11111,selectedUserType);
+        let user = new User(username,username,password,11111,selectedUserType);
         user.saveUser();
         //Return to login page
         navigation.navigate('Login')
@@ -36,7 +36,7 @@ export default function SignUp({navigation}){
       <Text>Username: </Text>
       <TextInput onChangeText={text=>setUsername(text)}/>
       <Text>Password: </Text>
-      <TextInput onChangeText={text=>setPassword(text)} secureTextEntity={true} multiline={false}/>
+      <TextInput onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
       <Text>Confirm Password: </Text>
       <TextInput onChangeText={text=>setConfirmPassword(text)} secureTextEntity={true}/>
       <Button title="Submit"

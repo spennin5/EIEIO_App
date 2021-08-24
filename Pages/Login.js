@@ -12,24 +12,24 @@ function LoginPage({navigation}){
   const [isLoggedInVal,setIsLoggedInVal] = isLoggedIn;
   //Check if user is buyer or seller
   const [isSellerVal,setIsSellerVal] = isSeller;
+  //Context variables from UserContext
+  const [user,setUser] = React.useContext(UserContext);
   //Used for validtion
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  function validateUser(){
-    authenticateUsers();
-    if(username=="buyer"&&password=="buyer"){
-      setIsSellerVal(false);
-      //In the future we need to validate that the username and password are valid against a DB
+  async function validateUser(){
+    let userInfo = await authenticateUsers(username,password);
+    console.log(userInfo);
+    if(userInfo[0]){
       setIsLoggedInVal('true');
-      //navigation.navigate("Home");
+      setUser(userInfo[1]);
+      if(userInfo[1].type=="seller"){
+        setIsSellerVal(true);
+      }
+      else{
+        setIsSellerVal(false);
+      }
     }
-    if(username=="seller"&&password=="seller"){
-      setIsSellerVal(true);
-      //In the future we need to validate that the username and password are valid against a DB
-      setIsLoggedInVal('true');
-      //navigation.navigate("Home");
-    }
-
   }
   return(
     <View>
