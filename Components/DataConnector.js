@@ -8,10 +8,11 @@ var fs = require('expo-file-system');
 
 export class User{
   //Create new user
-  constructor(name, username, password, zipCode,type){
+  constructor(name, username, password, email, zipCode,type){
     this.name = name;
     this.username = username;
     this.password = password;
+    this.email = email;
     this.zipCode = zipCode;
     this.type = type
   }

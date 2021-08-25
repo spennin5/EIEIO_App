@@ -6,19 +6,31 @@ Author: Sam Pennington
 */
 import * as React from 'react';
 import { View, Text, TextInput, Button} from 'react-native';
-import {AuthContext} from '../Components/Context.js';
+import {AuthContext,UserContext} from '../Components/Context.js';
 import TopBar from '../Components/topBar.js';
 import ItemCard from '../Components/itemCard';
 import DemoItems from '../ForDemo/demoItemsFunctions.js';
+import { SearchBar } from 'react-native-elements';
 import {useContext} from 'react';
 
 
 export default function BuyerHome({navigation}){
+  //Context variables from UserContext
+  const [user,setUser] = React.useContext(UserContext);
+  console.log("USER: "+user)
+  const [searchZip, setSearchZip] = React.useState('30602');
+  const [searchBoxVal, setSearchBoxVal] = React.useState('');
+  function updateSearchZip(zip){
+    setSearchBoxVal(zip);
+    if(zip.length == 5){
+      setSearchZip(zip);
+    }
+  }
   return(
     <View>
-    <TopBar/>
-    <DemoItems zipCode="30602"/>
-
+      <TopBar/>
+      <SearchBar placeholder="Find Produce in Your Zip Code" onChangeText={updateSearchZip} value={searchBoxVal}/>
+      <DemoItems zipCode={searchZip}/>
     </View>
   );
 }

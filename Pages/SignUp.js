@@ -12,6 +12,9 @@ import {User} from '../Components/DataConnector.js';
 export default function SignUp({navigation}){
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [zipcode, setZipcode] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [name, setName] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [passMatch,setPassMatch] = React.useState(false);
   const [selectedUserType, setSelectedUserType] = useState('Buyer');
@@ -21,8 +24,8 @@ export default function SignUp({navigation}){
     const match = pass1 === pass2;
     if(match){
       if(pass1.length > 0){
-        //Temporary dummy data to make and store a user
-        let user = new User(username,username,password,11111,selectedUserType);
+        //Set up and save new user
+        let user = new User(name,username,password,email,zipcode,selectedUserType);
         user.saveUser();
         //Return to login page
         navigation.navigate('Login')
@@ -39,12 +42,18 @@ export default function SignUp({navigation}){
   }
   return(
     <View>
+      <Text>Name: </Text>
+      <TextInput onChangeText={text=>setName(text)}/>
       <Text>Username: </Text>
       <TextInput onChangeText={text=>setUsername(text)}/>
       <Text>Password: </Text>
       <TextInput onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
       <Text>Confirm Password: </Text>
       <TextInput onChangeText={text=>setConfirmPassword(text)} secureTextEntity={true}/>
+      <Text>Email: </Text>
+      <TextInput onChangeText={text=>setEmail(text)}/>
+      <Text>Zip Code: </Text>
+      <TextInput onChangeText={text=>setZipcode(text)}/>
       <Button title="Submit"
       onPress = {()=>ValidatePassMatch()}
       />

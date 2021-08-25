@@ -12,35 +12,40 @@ var itemJson = require('./demoItems.json')
 
 export default function DemoItems(props){
   let itemsInCode = itemJson[props.zipCode];
-  let keyArray = Object.keys(itemJson[props.zipCode]);
-  console.log(Object.entries(itemsInCode))
-  let itemString = "";
-  for(const [key,value] of Object.entries(itemsInCode)){
-    console.log("key:"+ key);
-    React.createElement(ItemCard,{price:value.price})
-    console.log(key);
-    console.log(value.price);
-  }
-
-
-
-  return(
-    <View>
-    {
-      keyArray.map((key)=>{
-        console.log("Item:"+ itemsInCode[key].item);
-        return(
-          <Image source={{uri:itemsInCode[key].src}}/>
-          <ItemCard key={itemsInCode[key].item} item={itemsInCode[key].item} seller={key} price={itemsInCode[key].price} source={itemsInCode[key].src}/>
-        )
-      })
+  try{
+    let keyArray = Object.keys(itemJson[props.zipCode]);
+    console.log(Object.entries(itemsInCode))
+    let itemString = "";
+    for(const [key,value] of Object.entries(itemsInCode)){
+      console.log("key:"+ key);
+      React.createElement(ItemCard,{price:value.price})
+      console.log(key);
+      console.log(value.price);
     }
 
 
 
+    return(
+      <View>
+      {
+        keyArray.map((key)=>{
+          console.log("Item:"+ itemsInCode[key].item);
+          return(
 
-    </View>
-  );
+            <ItemCard key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src}/>
+          )
+        })
+      }
+      </View>
+    );
+  }
+  catch(e){
+    console.log(e);
+    return(
+      <View></View>
+    );
+  }
+
 }
 function IndividualItem(props){
   return(
