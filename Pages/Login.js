@@ -1,3 +1,9 @@
+/*
+Task: Main page for non-logged-in users. Allows users to log in or go to sign up page
+Parameters: 'navigation' allows for navigation using navigation tree
+Error Handling: todo
+Author: Sam Pennington
+*/
 import * as React from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { View, Text, TextInput, Button} from 'react-native';

@@ -1,3 +1,9 @@
+/*
+Task: Navigational element holding cross-page elements
+Parameters: N/A
+Error Handling: N/A
+Author: Sam Pennington
+*/
 import * as React from 'react';
 import {AuthContext} from '../Components/Context.js';
 import {useContext} from 'react';

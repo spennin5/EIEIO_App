@@ -1,3 +1,9 @@
+/*
+Task: This file allows users to create new profiles and then those profiles are saved.
+Parameters: 'navigation' allows page navigation via the navigation tree
+Error Handling: This file contains checks for password matching and password length requirements
+Author: Sam Pennington
+*/
 import * as React from 'react';
 import { View, Text, TextInput, Button} from 'react-native';
 import {useState} from 'react';

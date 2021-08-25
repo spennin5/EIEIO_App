@@ -1,3 +1,9 @@
+/*
+Task: This file allows sellers to create new objects for sale
+Parameters: 'navigation' allows for navigation using navigation tree
+Error Handling: N/A
+Author: Sam Pennington
+*/
 import * as React from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { View, Text, TextInput, Button} from 'react-native';

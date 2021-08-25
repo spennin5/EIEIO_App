@@ -1,3 +1,9 @@
+/*
+Task: This file shows a map view of where items for sale are located
+Parameters: N/A
+Error Handling: N/A
+Author: 
+*/
 import * as React from 'react';
 import { View } from 'react-native';
 import MapView from 'react-native-maps';

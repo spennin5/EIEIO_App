@@ -1,3 +1,10 @@
+/*
+Task: This file loads a set of sample data for demo purposes and returns ItemCards for each demo item
+Parameters: prop handles passed in properties from the <DemoItems> tag. The only
+property is zipcode which is used to show sets of items from that zipcode
+Error Handling: N/A
+Author: Sam Pennington
+*/
 import React from "react";
 import {Text, View} from 'react-native';
 import ItemCard from "../Components/itemCard.js";
@@ -23,7 +30,8 @@ export default function DemoItems(props){
       keyArray.map((key)=>{
         console.log("Item:"+ itemsInCode[key].item);
         return(
-          <ItemCard item={itemsInCode[key].item} seller={key} price={itemsInCode[key].price}/>
+          <Image source={{uri:itemsInCode[key].src}}/>
+          <ItemCard key={itemsInCode[key].item} item={itemsInCode[key].item} seller={key} price={itemsInCode[key].price} source={itemsInCode[key].src}/>
         )
       })
     }

@@ -1,3 +1,9 @@
+/*
+Task: This file requests camera permissions and opens the camera. Currently unused
+Parameters: N/A
+Error Handling: N/A
+Author: Sam Pennington
+*/
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';

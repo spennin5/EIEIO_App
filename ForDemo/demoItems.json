@@ -2,17 +2,20 @@
   "30602": {
     "VeggieSeller5": {
       "item":"Cucumber",
-      "price":"$5"
+      "price":"$5",
+      "src":"../ForDemo/strawberry.jpg"
     },
     "TheFruitGuy": {
       "item":"Strawberries",
-      "price":"$7"
+      "price":"$7",
+      "src":"../ForDemo/strawberry.jpg"
     }
   },
   "30041":{
     "BerryNiceProduce":{
       "item":"Grapes",
-      "price":"$11"
+      "price":"$11",
+      "src":"../ForDemo/strawberry3.jpg"
     }
   }
 }

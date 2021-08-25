@@ -1,3 +1,9 @@
+/*
+Task: This file allows sellers to pick images of their items from device storage
+Parameters: N/A
+Error Handling: N/A
+Author: Sam Pennington
+*/
 import * as React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
