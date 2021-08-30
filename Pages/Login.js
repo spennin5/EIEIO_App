@@ -23,12 +23,11 @@ function LoginPage({navigation}){
   //Used for validtion
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [userMsg,setUserMsg] = React.useState('');
   async function validateUser(){
     let userInfo = await authenticateUsers(username,password);
-    console.log("User info: "+userInfo[1]['type']);
-    for(var key in userInfo[1]){
-      console.log(key+": "+userInfo[1][key])
-    }
+    console.log(userInfo)
+
     if(userInfo[0]){
       setIsLoggedInVal('true');
       setUser(userInfo[1]);
@@ -39,6 +38,10 @@ function LoginPage({navigation}){
         setIsSellerVal(false);
       }
     }
+    else{
+      //Display incorrect user/password message
+      setUserMsg("Incorrect Username or Password");
+    }
   }
   return(
     <View>
@@ -48,6 +51,7 @@ function LoginPage({navigation}){
       <TextInput autoCapitalize='none' onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
       <Button title="Submit" onPress={() => validateUser()}/>
       <Button title = "Sign Up" onPress={() => navigation.navigate('SignUp')}/>
+      <Text>{userMsg}</Text>
     </View>
   );
 }

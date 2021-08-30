@@ -7,12 +7,12 @@ Author: Sam Pennington
 import * as React from 'react';
 import {AuthContext} from '../Components/Context.js';
 import {useContext} from 'react';
-import {Button} from 'react-native';
+import {Button, StyleSheet} from 'react-native';
 /*
 This component should be used on the top of every page once a user is logged in.
 It holds app-wide functionality such as "Logout"
  */
-export default function topBar(){
+function TopBar(){
   //Used to set a user's state to be not logged in
   const { isLoggedIn, isSeller } = React.useContext(AuthContext);
   const [isLoggedInVal,setIsLoggedInVal] = isLoggedIn;
@@ -21,6 +21,13 @@ export default function topBar(){
     setIsLoggedInVal(false);
   }
   return(
-    <Button title= "Log Out" onPress={()=>logout()}/>
+    <Button color='white' titleProps={styles.text} title= "Log Out" onPress={()=>logout()}/>
   );
 }
+
+const styles = StyleSheet.create({
+  text: {
+    color: 'black'
+  }
+});
+export default TopBar;

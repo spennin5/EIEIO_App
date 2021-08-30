@@ -5,25 +5,31 @@ Error Handling: N/A
 Author: Sam Pennington
 */
 import * as React from 'react';
-import { View,ScrollView, Text, Image } from 'react-native';
+import { StyleSheet, View,ScrollView, Text, Image } from 'react-native';
 
 //Reusable component holding information about items for sale.
 //TODO: add in pictures of items
 function ItemCard(props) {
-  
+
   //No idea if this works
 
   return(
     <View>
-      <ScrollView horizontal>
-        <View>
-          <Image source={props.source}/>
+        <View style={styles.textBox}>
           <Text>Seller: {props.sellerName}</Text>
           <Text>Item: {props.item}</Text>
           <Text>Price: {props.price}</Text>
         </View>
-        </ScrollView>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  textBox:{
+    margin: 2,
+    borderColor: 'black',
+    borderWidth: 1,
+    backgroundColor: '#D3D3D3'
+  }
+});
 export default ItemCard;

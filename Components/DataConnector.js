@@ -70,6 +70,9 @@ export async function authenticateUsers(inputUsername,inputPassword){
       return returnedSet;
     }
   }
+  else{
+    return [false];
+  }
 }
 
 export function saveItem(item){
