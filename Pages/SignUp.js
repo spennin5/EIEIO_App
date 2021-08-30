@@ -27,6 +27,7 @@ export default function SignUp({navigation}){
         //Set up and save new user
         let user = new User(name,username,password,email,zipcode,selectedUserType);
         user.saveUser();
+        user.printUser();
         //Return to login page
         navigation.navigate('Login')
       }
@@ -54,9 +55,7 @@ export default function SignUp({navigation}){
       <TextInput onChangeText={text=>setEmail(text)}/>
       <Text>Zip Code: </Text>
       <TextInput onChangeText={text=>setZipcode(text)}/>
-      <Button title="Submit"
-      onPress = {()=>ValidatePassMatch()}
-      />
+      <Text>Profile Type: </Text>
       <Picker
         selectedValue={selectedUserType}
         onValueChange={(itemValue, itemIndex) =>
@@ -65,6 +64,9 @@ export default function SignUp({navigation}){
         <Picker.Item label="Buyer" value="buyer" />
         <Picker.Item label="Seller" value="seller" />
       </Picker>
+      <Button title="Submit"
+      onPress = {()=>ValidatePassMatch()}
+      />
     </View>
   );
 }

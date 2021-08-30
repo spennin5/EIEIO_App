@@ -10,14 +10,14 @@ import { View,ScrollView, Text, Image } from 'react-native';
 //Reusable component holding information about items for sale.
 //TODO: add in pictures of items
 function ItemCard(props) {
-  console.log("Item:"+ props.item)
-  console.log("Source:"+ props.source)
+  
   //No idea if this works
 
   return(
     <View>
       <ScrollView horizontal>
         <View>
+          <Image source={props.source}/>
           <Text>Seller: {props.sellerName}</Text>
           <Text>Item: {props.item}</Text>
           <Text>Price: {props.price}</Text>

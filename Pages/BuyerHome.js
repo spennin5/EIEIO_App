@@ -17,7 +17,6 @@ import {useContext} from 'react';
 export default function BuyerHome({navigation}){
   //Context variables from UserContext
   const [user,setUser] = React.useContext(UserContext);
-  console.log("USER: "+user)
   const [searchZip, setSearchZip] = React.useState('30602');
   const [searchBoxVal, setSearchBoxVal] = React.useState('');
   function updateSearchZip(zip){
@@ -29,6 +28,7 @@ export default function BuyerHome({navigation}){
   return(
     <View>
       <TopBar/>
+      <Button title="Map View"/>
       <SearchBar placeholder="Find Produce in Your Zip Code" onChangeText={updateSearchZip} value={searchBoxVal}/>
       <DemoItems zipCode={searchZip}/>
     </View>

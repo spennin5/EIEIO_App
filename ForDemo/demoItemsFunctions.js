@@ -8,19 +8,19 @@ Author: Sam Pennington
 import React from "react";
 import {Text, View} from 'react-native';
 import ItemCard from "../Components/itemCard.js";
+
 var itemJson = require('./demoItems.json')
 
 export default function DemoItems(props){
   let itemsInCode = itemJson[props.zipCode];
   try{
     let keyArray = Object.keys(itemJson[props.zipCode]);
-    console.log(Object.entries(itemsInCode))
+
     let itemString = "";
     for(const [key,value] of Object.entries(itemsInCode)){
-      console.log("key:"+ key);
+
       React.createElement(ItemCard,{price:value.price})
-      console.log(key);
-      console.log(value.price);
+
     }
 
 
@@ -29,7 +29,7 @@ export default function DemoItems(props){
       <View>
       {
         keyArray.map((key)=>{
-          console.log("Item:"+ itemsInCode[key].item);
+          
           return(
 
             <ItemCard key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src}/>

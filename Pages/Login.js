@@ -25,7 +25,10 @@ function LoginPage({navigation}){
   const [password, setPassword] = React.useState('');
   async function validateUser(){
     let userInfo = await authenticateUsers(username,password);
-    console.log(userInfo);
+    console.log("User info: "+userInfo[1]['type']);
+    for(var key in userInfo[1]){
+      console.log(key+": "+userInfo[1][key])
+    }
     if(userInfo[0]){
       setIsLoggedInVal('true');
       setUser(userInfo[1]);
@@ -43,7 +46,6 @@ function LoginPage({navigation}){
       <TextInput autoCapitalize='none' onChangeText={text=>setUsername(text)}/>
       <Text>Password: </Text>
       <TextInput autoCapitalize='none' onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
-      <Text>'Your Username is {username} and your Password is {password}'</Text>
       <Button title="Submit" onPress={() => validateUser()}/>
       <Button title = "Sign Up" onPress={() => navigation.navigate('SignUp')}/>
     </View>

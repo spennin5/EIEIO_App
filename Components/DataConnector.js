@@ -65,7 +65,7 @@ export async function authenticateUsers(inputUsername,inputPassword){
     var password = specificUser.password;
     if(password == inputPassword){
       returnedSet.push(true);
-      let user = new User (specificUser.name, specificUser.username,specificUser.password, specificUser.zipCode,specificUser.type);
+      let user = new User (specificUser.name, specificUser.username,specificUser.password, specificUser.email,specificUser.zipCode,specificUser.type);
       returnedSet.push(user);
       return returnedSet;
     }
