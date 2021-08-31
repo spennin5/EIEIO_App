@@ -27,18 +27,38 @@ export default function BuyerHome({navigation}){
   }
 
   return(
-    <View style={styles.view}>
-      <TopBar/>
-      <Button title="Map View"/>
-      <SearchBar placeholder="Find Produce in Your Zip Code" onChangeText={updateSearchZip} value={searchBoxVal}/>
-      <DemoItems zipCode={searchZip}/>
+    <View>
+      <View style={styles.topRow}>
+        <TouchableOpacity style={styles.button}>
+          <Button  title="Map View"/>
+        </TouchableOpacity>
+
+        <TopBar/>
+      </View>
+      <View style={styles.view}>
+        <SearchBar placeholder="Find Produce in Your Zip Code" onChangeText={updateSearchZip} value={searchBoxVal}/>
+        <DemoItems zipCode={searchZip}/>
+      </View>
     </View>
   );
 }
 
 const styles=StyleSheet.create({
   view:{
-    backgroundColor:'#FFFFFF',
+    backgroundColor:'rgba(52,52,52,.0)',
+
+  },
+  container:{
+    flex:1
+  },
+  topRow:{
+    height: 50,
+    flexDirection:'row',
+    justifyContent:'space-evenly'
+  },
+  button:{
+    alignItems:'flex-start',
+    justifyContent:'center',
     flex:1
   }
 });

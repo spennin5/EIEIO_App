@@ -1,7 +1,7 @@
 const assetObject = {
   strawberry: require('./strawberry.jpg'),
-  strawberry2: require('./strawberry2.jpg'),
-  strawberry3: require('./strawberry3.jpg')
+  cucumber: require('./cucumber.jpg'),
+  grapes: require('./grapes.jpg')
 }
 
 module.exports = assetObject

@@ -11,13 +11,8 @@ const assets = require('../ForDemo/assets.js')
 //TODO: add in pictures of items
 function ItemCard(props) {
 
-  //No idea if this works
-  console.log("source: "+props.source)
-  const [imgSource,setImgSource] = React.useState()
-  React.useEffect(()=>{
-    setImgSource(props.source)
-  });
-  console.log(imgSource)
+
+
   return(
     <View style={styles.container}>
       <Image source={assets[props.source]} style={styles.image} />
@@ -40,11 +35,12 @@ function ItemCard(props) {
 const styles = StyleSheet.create({
   textBox:{
     margin: 2,
+    marginLeft: 4,
     flex:3
   },
   container:{
     flexDirection:'row',
-    margin:5,
+    margin:2,
     borderColor: 'black',
     borderWidth: 1,
     backgroundColor: '#D3D3D3',
@@ -58,7 +54,7 @@ const styles = StyleSheet.create({
     alignContent:'center'
   },
   image:{
-    height:50,
+    height:70,
     width:50,
     flex: 1,
     borderColor:'black',
