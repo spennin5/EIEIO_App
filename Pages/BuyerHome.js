@@ -10,6 +10,8 @@ import {AuthContext,UserContext} from '../Components/Context.js';
 import TopBar from '../Components/topBar.js';
 import ItemCard from '../Components/itemCard';
 import DemoItems from '../ForDemo/demoItemsFunctions.js';
+import MapPage from "./MapPage.js";
+import MapView from 'react-native-maps';
 import { SearchBar } from 'react-native-elements';
 import {useContext} from 'react';
 
@@ -19,6 +21,7 @@ export default function BuyerHome({navigation}){
   const [user,setUser] = React.useContext(UserContext);
   const [searchZip, setSearchZip] = React.useState('30602');
   const [searchBoxVal, setSearchBoxVal] = React.useState('');
+  const [modalVisible,setModalVisible] = React.useState(false);
   function updateSearchZip(zip){
     setSearchBoxVal(zip);
     if(zip.length == 5){
@@ -30,7 +33,7 @@ export default function BuyerHome({navigation}){
     <View>
       <View style={styles.topRow}>
         <TouchableOpacity style={styles.button}>
-          <Button  title="Map View"/>
+          <Button title="Map View" onPress={()=>{setModalVisible(true)}}/>
         </TouchableOpacity>
 
         <TopBar/>
@@ -39,7 +42,14 @@ export default function BuyerHome({navigation}){
         <SearchBar placeholder="Find Produce in Your Zip Code" onChangeText={updateSearchZip} value={searchBoxVal}/>
         <DemoItems zipCode={searchZip}/>
       </View>
+      <View>
+        <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={()=>{setModalVisible(!modalVisible)}}>
+          <Button title="X" onPress={()=>{setModalVisible(!modalVisible)}}/>
+          <MapPage/>
+        </Modal>
+      </View>
     </View>
+
   );
 }
 
@@ -59,6 +69,9 @@ const styles=StyleSheet.create({
   button:{
     alignItems:'flex-start',
     justifyContent:'center',
+    flex:1
+  },
+  modal:{
     flex:1
   }
 });
