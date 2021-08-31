@@ -12,10 +12,20 @@ import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity } from 'react
 function ItemCard(props) {
 
   //No idea if this works
-
+  console.log("source: "+props.source)
+  const [imgSource,setImgSource] = React.useState()
+  React.useEffect(()=>{
+    setImgSource(props.source)
+  });
+  console.log(imgSource)
   return(
     <View style={styles.container}>
+      {/*working*/}
+      <Image source={require("../ForDemo/strawberry.jpg")} style={styles.image} />
+      {/*same URL but not working*/}
+      <Image source={require("\""+props.source+"\"")} style={styles.image} />
         <View style={styles.textBox}>
+
           <Text>Seller: {props.sellerName}</Text>
           <Text>Item: {props.item}</Text>
           <Text>Price: {props.price}</Text>
@@ -49,6 +59,13 @@ const styles = StyleSheet.create({
   bText:{
     alignSelf:'center',
     alignContent:'center'
+  },
+  image:{
+    height:50,
+    width:50,
+    flex: 1,
+    borderColor:'black',
+    borderWidth:1
   }
 });
 export default ItemCard;
