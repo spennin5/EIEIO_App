@@ -24,6 +24,7 @@ function LoginPage({navigation}){
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [userMsg,setUserMsg] = React.useState('');
+  const [error,setError] = React.useState(false);
   async function validateUser(){
     let userInfo = await authenticateUsers(username,password);
     if(userInfo[0]){
@@ -39,6 +40,7 @@ function LoginPage({navigation}){
     else{
       //Display incorrect user/password message
       setUserMsg("Incorrect Username or Password");
+      setError(true)
     }
   }
   return(
@@ -59,8 +61,9 @@ function LoginPage({navigation}){
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
           <Button title = "Sign Up" onPress={() => navigation.navigate('SignUp')}/>
         </TouchableOpacity>
+        {error ? <Text style={styles.msg}>{userMsg}</Text>:null}
 
-        <Text style={styles.msg}>{userMsg}</Text>
+
         </View>
       </ImageBackground>
     </View>
