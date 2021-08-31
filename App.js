@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';//must be at very top
 import * as React from 'react';
 import {useEffect, useState} from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import MapView from 'react-native-maps';
-import MappingComponent from './Components/mapComponent.js';
-import ItemCard from './Components/itemCard.js';
+//import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+//import * as ImagePicker from 'expo-image-picker';
+//import MapView from 'react-native-maps';
+//import MappingComponent from './Components/mapComponent.js';
+//import ItemCard from './Components/itemCard.js';
 import LoginPage from './Pages/Login.js';
 import SignUpPage from './Pages/SignUp.js';
 import SellerHomePage from './Pages/SellerHome.js';

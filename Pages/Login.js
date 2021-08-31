@@ -6,7 +6,7 @@ Author: Sam Pennington
 */
 import * as React from 'react';
 import * as SecureStore from 'expo-secure-store';
-import { View, Text, TextInput, Button} from 'react-native';
+import { View, Text, TextInput, Button,StyleSheet,ImageBackground,TouchableOpacity} from 'react-native';
 import {AuthContext, UserContext} from '../Components/Context.js';
 import {useContext} from 'react';
 import {authenticateUsers} from '../Components/DataConnector.js';
@@ -26,8 +26,6 @@ function LoginPage({navigation}){
   const [userMsg,setUserMsg] = React.useState('');
   async function validateUser(){
     let userInfo = await authenticateUsers(username,password);
-    console.log(userInfo)
-
     if(userInfo[0]){
       setIsLoggedInVal('true');
       setUser(userInfo[1]);
@@ -44,16 +42,55 @@ function LoginPage({navigation}){
     }
   }
   return(
-    <View>
-      <Text>Username: </Text>
-      <TextInput autoCapitalize='none' onChangeText={text=>setUsername(text)}/>
-      <Text>Password: </Text>
-      <TextInput autoCapitalize='none' onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
-      <Button title="Submit" onPress={() => validateUser()}/>
-      <Button title = "Sign Up" onPress={() => navigation.navigate('SignUp')}/>
-      <Text>{userMsg}</Text>
+    <View style={styles.container}>
+      <ImageBackground source={require("../Resources/farmerMarket.jpg")} resizeMode="cover" style={styles.image}>
+      <View style={styles.inner}>
+        <Text>Username: </Text>
+        <View style={styles.input}>
+          <TextInput autoCapitalize='none' onChangeText={text=>setUsername(text)}/>
+        </View>
+        <Text>Password: </Text>
+        <View style={styles.input}>
+          <TextInput autoCapitalize='none' onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
+        </View>
+        <TouchableOpacity style={styles.button} onPress={() => validateUser()}>
+          <Button title = "Submit" onPress={() => validateUser()}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
+          <Button title = "Sign Up" onPress={() => navigation.navigate('SignUp')}/>
+        </TouchableOpacity>
+
+        <Text style={styles.msg}>{userMsg}</Text>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white'
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+    opacity: 0.8
+  },
+  inner:{
+    backgroundColor:'white'
+  },
+  button:{
+    backgroundColor: 'rgba(52, 52, 52, 0.9)',
+    alignSelf:'center',
+    margin: 5,
+  },
+  input:{
+    borderBottomWidth: 1
+  },
+  msg:{
+    fontStyle:"italic",
+    marginLeft: 5
+  }
+});
 
 export default LoginPage;

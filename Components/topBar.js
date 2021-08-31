@@ -7,7 +7,7 @@ Author: Sam Pennington
 import * as React from 'react';
 import {AuthContext} from '../Components/Context.js';
 import {useContext} from 'react';
-import {Button, StyleSheet} from 'react-native';
+import {Button, StyleSheet,TouchableOpacity,Text,View} from 'react-native';
 /*
 This component should be used on the top of every page once a user is logged in.
 It holds app-wide functionality such as "Logout"
@@ -21,13 +21,27 @@ function TopBar(){
     setIsLoggedInVal(false);
   }
   return(
-    <Button color='white' titleProps={styles.text} title= "Log Out" onPress={()=>logout()}/>
+    <View style={styles.view}>
+      <TouchableOpacity style={styles.touchable} onPress={()=>logout()}>
+        <Text style={styles.text}>Logout</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   text: {
-    color: 'black'
+    color: 'black',
+    justifyContent:"center",
+    fontSize: 25
+  },
+  touchable:{
+    backgroundColor: 'rgba(52, 52, 52, 0.0)',
+    alignSelf:'flex-end',
+    margin:5
+  },
+  view:{
+    backgroundColor: 'rgba(52, 52, 52, 0.0)'
   }
 });
 export default TopBar;

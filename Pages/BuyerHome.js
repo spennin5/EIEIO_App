@@ -5,7 +5,7 @@ Error Handling: N/A
 Author: Sam Pennington
 */
 import * as React from 'react';
-import { View, Text, TextInput, Button} from 'react-native';
+import { View, Text, TextInput, Button,Modal, TouchableOpacity,StyleSheet} from 'react-native';
 import {AuthContext,UserContext} from '../Components/Context.js';
 import TopBar from '../Components/topBar.js';
 import ItemCard from '../Components/itemCard';
@@ -25,8 +25,9 @@ export default function BuyerHome({navigation}){
       setSearchZip(zip);
     }
   }
+
   return(
-    <View>
+    <View style={styles.view}>
       <TopBar/>
       <Button title="Map View"/>
       <SearchBar placeholder="Find Produce in Your Zip Code" onChangeText={updateSearchZip} value={searchBoxVal}/>
@@ -34,3 +35,10 @@ export default function BuyerHome({navigation}){
     </View>
   );
 }
+
+const styles=StyleSheet.create({
+  view:{
+    backgroundColor:'#FFFFFF',
+    flex:1
+  }
+});
