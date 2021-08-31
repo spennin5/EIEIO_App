@@ -6,7 +6,7 @@ Author: Sam Pennington
 */
 import * as React from 'react';
 import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity } from 'react-native';
-
+const assets = require('../ForDemo/assets.js')
 //Reusable component holding information about items for sale.
 //TODO: add in pictures of items
 function ItemCard(props) {
@@ -20,10 +20,7 @@ function ItemCard(props) {
   console.log(imgSource)
   return(
     <View style={styles.container}>
-      {/*working*/}
-      <Image source={require("../ForDemo/strawberry.jpg")} style={styles.image} />
-      {/*same URL but not working*/}
-      <Image source={require("\""+props.source+"\"")} style={styles.image} />
+      <Image source={assets[props.source]} style={styles.image} />
         <View style={styles.textBox}>
 
           <Text>Seller: {props.sellerName}</Text>

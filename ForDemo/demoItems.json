@@ -3,19 +3,19 @@
     "VeggieSeller5": {
       "item":"Cucumber",
       "price":"$5",
-      "src":"'https://reactnative.dev/img/tiny_logo.png'"
+      "src":"strawberry"
     },
     "TheFruitGuy": {
       "item":"Strawberries",
       "price":"$7",
-      "src": "../ForDemo/strawberry2.jpg"
+      "src": "strawberry2"
     }
   },
   "30041":{
     "BerryNiceProduce":{
       "item":"Grapes",
       "price":"$11",
-      "src":"../ForDemo/strawberry3.jpg"
+      "src":"'strawberry3'"
     }
   }
 }
