@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(52, 52, 52, 0.0)',
     alignSelf:'flex-end',
     margin:5
+
   },
   view:{
     backgroundColor: 'rgba(52, 52, 52, 0.0)'
