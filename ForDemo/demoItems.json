@@ -3,19 +3,25 @@
     "VeggieSeller5": {
       "item":"Cucumber",
       "price":"$5",
-      "src":"cucumber"
+      "src":"cucumber",
+      "long":88.28,
+      "lat":88.28
     },
     "TheFruitGuy": {
       "item":"Strawberries",
       "price":"$7",
-      "src": "strawberry"
+      "src": "strawberry",
+      "long":34.2,
+      "lat":-84.2
     }
   },
   "30041":{
     "BerryNiceProduce":{
       "item":"Grapes",
       "price":"$11",
-      "src":"grapes"
+      "src":"grapes",
+      "long":86.28,
+      "lat":86.28
     }
   }
 }

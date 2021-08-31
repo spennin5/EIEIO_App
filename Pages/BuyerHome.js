@@ -11,7 +11,7 @@ import TopBar from '../Components/topBar.js';
 import ItemCard from '../Components/itemCard';
 import DemoItems from '../ForDemo/demoItemsFunctions.js';
 import MapPage from "./MapPage.js";
-import MapView from 'react-native-maps';
+
 import { SearchBar } from 'react-native-elements';
 import {useContext} from 'react';
 
@@ -45,7 +45,7 @@ export default function BuyerHome({navigation}){
       <View>
         <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={()=>{setModalVisible(!modalVisible)}}>
           <Button title="X" onPress={()=>{setModalVisible(!modalVisible)}}/>
-          <MapPage/>
+          <MapPage zipCode={searchZip}/>
         </Modal>
       </View>
     </View>

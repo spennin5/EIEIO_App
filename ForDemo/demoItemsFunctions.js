@@ -17,19 +17,11 @@ export default function DemoItems(props){
     let keyArray = Object.keys(itemJson[props.zipCode]);
 
     let itemString = "";
-    for(const [key,value] of Object.entries(itemsInCode)){
-
-      React.createElement(ItemCard,{price:value.price})
-
-    }
-
-
-
     return(
       <View>
       {
         keyArray.map((key)=>{
-          
+
           return(
 
             <ItemCard key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src}/>
@@ -46,11 +38,4 @@ export default function DemoItems(props){
     );
   }
 
-}
-function IndividualItem(props){
-  return(
-    <View>
-    <ItemCard price={props.price}/>
-    </View>
-  );
 }
