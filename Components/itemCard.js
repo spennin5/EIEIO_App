@@ -5,26 +5,49 @@ Error Handling: N/A
 Author: Sam Pennington
 */
 import * as React from 'react';
-import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity } from 'react-native';
+import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity,Modal,Button } from 'react-native';
 //const assets = require('../ForDemo/assets.js');
 import {AssetObject as assets} from '../Components/DataConnector.js';
+import TransactionModal from '../Pages/Transaction.js';
+var opacityState = .8;
 //Reusable component holding information about items for sale.
 function ItemCard(props) {
+  const [modalVisible,setModalVisible] = React.useState(false);
+  const [opacityVal,setOpacityVal] = React.useState(.9);
+  function openModal(){
+    setModalVisible(true);
+    setOpacityVal(.1);
+  }
+  function closeModal(){
+    setModalVisible(!modalVisible)
+    setOpacityVal(1);
+  }
   return(
-    <View style={styles.container}>
-      <Image source={assets[props.source]} style={styles.image} />
-        <View style={styles.textBox}>
+    <View>
+      <View style={[styles.container,{opacity:opacityVal}]}>
+        <Image source={assets[props.source]} style={styles.image} />
+          <View style={styles.textBox}>
 
-          <Text>Seller: {props.sellerName}</Text>
-          <Text>Item: {props.item}</Text>
-          <Text>Price: {props.price}</Text>
-        </View>
-        <View style={styles.button}>
-          <Text></Text>
-          <TouchableOpacity>
-            <Text style={styles.bText}>Buy Now</Text>
+            <Text>Seller: {props.sellerName}</Text>
+            <Text>Item: {props.item}</Text>
+            <Text>Price: {props.price}</Text>
+          </View>
+          <TouchableOpacity onPress={()=>{openModal()}}>
+            <View style={styles.button}>
+              <Text></Text>
+                <Text style={styles.bText}>Buy Now</Text>
+            </View>
           </TouchableOpacity>
-        </View>
+      </View>
+      <View>
+        <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={()=>{closeModal()}}>
+          <View style={styles.modalFill}/>
+          <View style={styles.modalContent}>
+            <Button title="Close" onPress={()=>{closeModal()}}/>
+          </View>
+          <View style={styles.modalFill}/>
+        </Modal>
+      </View>
     </View>
   );
 }
@@ -41,6 +64,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     backgroundColor: '#D3D3D3',
+    opacity:opacityState
   },
   button:{
     flex:1,
@@ -56,6 +80,17 @@ const styles = StyleSheet.create({
     flex: 1,
     borderColor:'black',
     borderWidth:1
+  },
+  modalFill:{
+    flex:1,
+
+  },
+  modalContent:{
+    justifyContent:'center',
+    backgroundColor:'grey',
+    
+    flex:6,
+    marginTop:'auto'
   }
 });
 export default ItemCard;

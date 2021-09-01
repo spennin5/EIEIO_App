@@ -6,7 +6,7 @@ Error Handling: N/A
 Author: Sam Pennington
 */
 import React from "react";
-import {Text, View} from 'react-native';
+import {Text, View,TouchableOpacity} from 'react-native';
 import ItemCard from "../Components/itemCard.js";
 
 var itemJson = require('./demoItems.json')
@@ -21,10 +21,8 @@ export default function DemoItems(props){
       <View>
       {
         keyArray.map((key)=>{
-
           return(
-
-            <ItemCard key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src}/>
+            <ItemCard  key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src}/>        
           )
         })
       }
