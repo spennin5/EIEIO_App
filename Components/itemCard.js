@@ -8,7 +8,7 @@ import * as React from 'react';
 import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity,Modal,Button } from 'react-native';
 //const assets = require('../ForDemo/assets.js');
 import {AssetObject as assets} from '../Components/DataConnector.js';
-import TransactionModal from '../Pages/Transaction.js';
+import TransactionPage from '../Pages/Transaction.js';
 var opacityState = .8;
 //Reusable component holding information about items for sale.
 function ItemCard(props) {
@@ -21,6 +21,9 @@ function ItemCard(props) {
   function closeModal(){
     setModalVisible(!modalVisible)
     setOpacityVal(1);
+  }
+  function purchase(cardNum, cvv, expiration){
+    return;
   }
   return(
     <View>
@@ -43,7 +46,9 @@ function ItemCard(props) {
         <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={()=>{closeModal()}}>
           <View style={styles.modalFill}/>
           <View style={styles.modalContent}>
-            <Button title="Close" onPress={()=>{closeModal()}}/>
+            <TransactionPage item={props.item} seller={props.sellerName} price={props.price}/>
+            <Button title="Submit Transaction" onPress={()=>{purchase()}}/>
+            <Button title="Cancel Transaction" onPress={()=>{closeModal()}}/>
           </View>
           <View style={styles.modalFill}/>
         </Modal>
@@ -86,9 +91,9 @@ const styles = StyleSheet.create({
 
   },
   modalContent:{
-    justifyContent:'center',
+
     backgroundColor:'grey',
-    
+
     flex:6,
     marginTop:'auto'
   }
