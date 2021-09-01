@@ -81,3 +81,11 @@ export function saveItem(item){
 export function loadItem(item){
 
 }
+
+export const AssetObject = {
+  strawberry: require('../ForDemo/strawberry.jpg'),
+  cucumber: require('../ForDemo/cucumber.jpg'),
+  grapes: require('../ForDemo/grapes.jpg')
+}
+
+//module.exports = AssetObject

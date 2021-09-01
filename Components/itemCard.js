@@ -6,13 +6,10 @@ Author: Sam Pennington
 */
 import * as React from 'react';
 import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity } from 'react-native';
-const assets = require('../ForDemo/assets.js')
+//const assets = require('../ForDemo/assets.js');
+import {AssetObject as assets} from '../Components/DataConnector.js';
 //Reusable component holding information about items for sale.
-//TODO: add in pictures of items
 function ItemCard(props) {
-
-
-
   return(
     <View style={styles.container}>
       <Image source={assets[props.source]} style={styles.image} />
