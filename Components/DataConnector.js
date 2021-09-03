@@ -69,6 +69,9 @@ export async function authenticateUsers(inputUsername,inputPassword){
       returnedSet.push(user);
       return returnedSet;
     }
+    else{
+      return [false];
+    }
   }
   else{
     return [false];
