@@ -45,24 +45,30 @@ function LoginPage({navigation}){
   }
   return(
     <View style={styles.container}>
-      <ImageBackground source={require("../Resources/farmerMarket.jpg")} resizeMode="cover" style={styles.image}>
+      <ImageBackground source={require("../Resources/tomatoes-2.jpeg")} resizeMode="cover" style={styles.image}>
+
+      <Text style={[styles.fontColor, styles.logo]}>e-i-e-i-o</Text>
+
       <View style={styles.inner}>
-        <Text>Username: </Text>
+        <Text style={styles.fontColor}>Username: </Text>
         <View style={styles.input}>
           <TextInput autoCapitalize='none' onChangeText={text=>setUsername(text)}/>
         </View>
-        <Text>Password: </Text>
+        
+        <Text style={styles.fontColor}>Password: </Text>
         <View style={styles.input}>
           <TextInput autoCapitalize='none' onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
         </View>
+        
         <TouchableOpacity style={styles.button} onPress={() => validateUser()}>
           <Button title = "Submit" onPress={() => validateUser()}/>
         </TouchableOpacity>
+        
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
           <Button title = "Sign Up" onPress={() => navigation.navigate('SignUp')}/>
         </TouchableOpacity>
+        
         {error ? <Text style={styles.msg}>{userMsg}</Text>:null}
-
 
         </View>
       </ImageBackground>
@@ -79,8 +85,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     opacity: 0.8
   },
+
+  logo:{
+    marginBottom: 100,
+    textAlign: 'center',
+    fontSize: 30,
+    //fontFamily: 'Brush Script MT'
+  },
+
+  fontColor:{
+    color: 'white'
+  },
+
   inner:{
-    backgroundColor:'white'
+    // backgroundColor:'white'
+    marginBottom: 250
   },
   button:{
     backgroundColor: 'rgba(52, 52, 52, 0.9)',
@@ -88,7 +107,8 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   input:{
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    borderBottomColor: 'white'
   },
   msg:{
     fontStyle:"italic",
