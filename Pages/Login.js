@@ -47,26 +47,26 @@ function LoginPage({navigation}){
     <View style={styles.container}>
       <ImageBackground source={require("../Resources/tomatoes-2.jpeg")} resizeMode="cover" style={styles.image}>
 
-      <Text style={[styles.fontColor, styles.logo]}>e-i-e-i-o</Text>
-
       <View style={styles.inner}>
         <Text style={styles.fontColor}>Username: </Text>
         <View style={styles.input}>
-          <TextInput autoCapitalize='none' onChangeText={text=>setUsername(text)}/>
+          <TextInput autoCapitalize='none' color="#FFF" onChangeText={text=>setUsername(text)}/>
         </View>
         
         <Text style={styles.fontColor}>Password: </Text>
         <View style={styles.input}>
-          <TextInput autoCapitalize='none' onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
+          <TextInput autoCapitalize='none' color="#FFF" onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
         </View>
         
-        <TouchableOpacity style={styles.button} onPress={() => validateUser()}>
-          <Button title = "Submit" onPress={() => validateUser()}/>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
-          <Button title = "Sign Up" onPress={() => navigation.navigate('SignUp')}/>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={() => validateUser()}>
+            <Button title = "Login" color="#3c8024" onPress={() => validateUser()}/>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={[styles.button, styles.redButton]} onPress={() => navigation.navigate('SignUp')}>
+            <Button title = "Sign Up" color="#CF0202" onPress={() => navigation.navigate('SignUp')}/>
+          </TouchableOpacity>
+        </View>
         
         {error ? <Text style={styles.msg}>{userMsg}</Text>:null}
 
@@ -83,36 +83,50 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: "center",
-    opacity: 0.8
-  },
-
-  logo:{
-    marginBottom: 100,
-    textAlign: 'center',
-    fontSize: 30,
-    //fontFamily: 'Brush Script MT'
+    opacity: 0.9
   },
 
   fontColor:{
-    color: 'white'
+    color: 'white',
+    paddingLeft: 20
   },
 
   inner:{
-    // backgroundColor:'white'
-    marginBottom: 250
+    backgroundColor:'rgba(0, 0, 0, 0.85)',
+    marginBottom: 100,
+    marginRight: 50,
+    marginLeft: 50,
+    paddingTop: 50,
+    borderRadius: 20
   },
+
+  buttonContainer:{
+    flexDirection: "row",
+    alignSelf: 'center',
+    paddingBottom: 20
+  },
+
   button:{
-    backgroundColor: 'rgba(52, 52, 52, 0.9)',
+    backgroundColor: 'rgba(60, 128, 36, 0.5)',
     alignSelf:'center',
     margin: 5,
   },
+
   input:{
     borderBottomWidth: 1,
-    borderBottomColor: 'white'
+    borderBottomColor: 'white',
+    marginRight: 20,
+    marginLeft: 20,
+    marginBottom: 35
   },
+  
   msg:{
     fontStyle:"italic",
-    marginLeft: 5
+    marginLeft: 5,
+    color: 'white',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginBottom: 10
   }
 });
 
