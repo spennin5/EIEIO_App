@@ -5,7 +5,7 @@ Error Handling: N/A
 Author: Sam Pennington
 */
 import * as React from 'react';
-import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity,Modal,Button } from 'react-native';
+import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity,Modal,Button, Touchable } from 'react-native';
 //const assets = require('../ForDemo/assets.js');
 import {AssetObject as assets} from '../Components/DataConnector.js';
 import TransactionPage from '../Pages/Transaction.js';
@@ -50,8 +50,14 @@ function ItemCard(props) {
           <View style={styles.modalFill}/>
           <View style={styles.modalContent}>
             <TransactionPage style={styles.transactionText} item={props.item} seller={props.sellerName} price={props.price}/>
-            <Button title="Submit Transaction" onPress={()=>{purchase()}}/>
-            <Button title="Cancel Transaction" onPress={()=>{closeModal()}}/>
+            <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.transactionButtons}>
+                  <Button title="Cancel Transaction" color="#CF0202" onPress={()=>{closeModal()}}/>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.transactionButtons} >
+                <Button title="Submit Transaction" color="#3c8024" onPress={()=>{purchase()}}/>
+              </TouchableOpacity>
+            </View>
           </View>
           <View style={styles.modalFill}/>
         </Modal>
@@ -104,12 +110,20 @@ const styles = StyleSheet.create({
     flex:1
   },
   modalContent:{
-
-    borderColor: 'black',
+    borderColor: '#3c8024',
     borderWidth: 2,
     borderRadius: 20,
-    backgroundColor:'grey',
-    flex: 6
+    backgroundColor:'white',
+    paddingBottom: 20,
+  },
+
+  buttonContainer:{
+    flexDirection: 'row'
+  },
+
+  transactionButtons:{
+    marginRight: 'auto',
+    marginLeft: 'auto',
   },
 });
 export default ItemCard;

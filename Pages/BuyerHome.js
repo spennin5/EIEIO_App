@@ -39,7 +39,7 @@ export default function BuyerHome({navigation}){
         <TopBar/>
       </View>
       <View>
-        <SearchBar style={styles.searchText} placeholder="Find Produce in Your Zip Code" placeholderTextColor="#FFF" onChangeText={updateSearchZip} value={searchBoxVal}/>
+        <SearchBar style={styles.searchBar} placeholder="Find Produce in Your Zip Code" placeholderTextColor="#FFF" onChangeText={updateSearchZip} value={searchBoxVal}/>
         <DemoItems zipCode={searchZip}/>
       </View>
       <View>
@@ -72,7 +72,7 @@ const styles=StyleSheet.create({
     flex:1
   },
 
-  searchText:{
+  searchBar:{
     color:'white'
   },
 

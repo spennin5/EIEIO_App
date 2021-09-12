@@ -11,7 +11,7 @@ import SignUpPage from './Pages/SignUp.js';
 import SellerHomePage from './Pages/SellerHome.js';
 import BuyerHomePage from './Pages/BuyerHome.js';
 import NewItemPage from './Pages/NewItem.js';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {AuthContext,UserContext} from './Components/Context.js';
 
@@ -68,3 +68,5 @@ export default function App() {
   }
 
 }
+
+
