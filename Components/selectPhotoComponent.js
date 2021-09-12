@@ -43,7 +43,7 @@ export default function SelectPhoto(){
   }
 
   return (
-    <View>
+    <View style={styles.photoSelectorContainer}>
       <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} />
 
 
@@ -65,10 +65,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
   logo: {
-    width: 305,
-    height: 159,
+    width: 200,
+    height: 100,
     marginBottom: 20,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderWidth: 1,
+    borderRadius: 25
   },
   instructions: {
     color: '#888',
@@ -77,9 +82,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#3c8024',
     padding: 20,
     borderRadius: 5,
+    marginRight: 'auto',
+    marginLeft: 'auto'
   },
   buttonText: {
     fontSize: 20,
