@@ -5,7 +5,7 @@ Error Handling: N/A
 Author: Sam Pennington
 */
 import * as React from 'react';
-import { View, Text, TextInput, Button,Modal, TouchableOpacity,StyleSheet} from 'react-native';
+import { View, Text, TextInput, Button,Modal, TouchableOpacity,StyleSheet, ImageBackground} from 'react-native';
 import {AuthContext,UserContext} from '../Components/Context.js';
 import TopBar from '../Components/topBar.js';
 import ItemCard from '../Components/itemCard';
@@ -30,16 +30,16 @@ export default function BuyerHome({navigation}){
   }
 
   return(
-    <View>
+    <View style={styles.view}>
       <View style={styles.topRow}>
         <TouchableOpacity style={styles.button}>
-          <Button title="Map View" onPress={()=>{setModalVisible(true)}}/>
+          <Button title="Map View" color="#CF0202" onPress={()=>{setModalVisible(true)}}/>
         </TouchableOpacity>
 
         <TopBar/>
       </View>
-      <View style={styles.view}>
-        <SearchBar placeholder="Find Produce in Your Zip Code" onChangeText={updateSearchZip} value={searchBoxVal}/>
+      <View>
+        <SearchBar style={styles.searchText} placeholder="Find Produce in Your Zip Code" placeholderTextColor="#FFF" onChangeText={updateSearchZip} value={searchBoxVal}/>
         <DemoItems zipCode={searchZip}/>
       </View>
       <View>
@@ -55,7 +55,7 @@ export default function BuyerHome({navigation}){
 
 const styles=StyleSheet.create({
   view:{
-    backgroundColor:'rgba(52,52,52,.0)',
+    backgroundColor:'#FFF',
 
   },
   container:{
@@ -71,6 +71,11 @@ const styles=StyleSheet.create({
     justifyContent:'center',
     flex:1
   },
+
+  searchText:{
+    color:'white'
+  },
+
   modal:{
     flex:1
   }

@@ -31,22 +31,25 @@ function ItemCard(props) {
         <Image source={assets[props.source]} style={styles.image} />
           <View style={styles.textBox}>
 
-            <Text>Seller: {props.sellerName}</Text>
-            <Text>Item: {props.item}</Text>
-            <Text>Price: {props.price}</Text>
+            <Text style={styles.itemText}>{props.item}</Text>
+            <Text style={styles.sellerText}>Sold by {props.sellerName}</Text>
+            <Text style={styles.priceText}>{props.price}</Text>
           </View>
-          <TouchableOpacity onPress={()=>{openModal()}}>
-            <View style={styles.button}>
-              <Text></Text>
-                <Text style={styles.bText}>Buy Now</Text>
-            </View>
-          </TouchableOpacity>
+
+          {/* 
+          Changed the Buy Now buttons to actual buttons because as text, they aren't as accessible when using Android Talkback or other assistive tech
+          */}
+          <View style={styles.button}>
+            <TouchableOpacity>
+              <Button title="Buy Now" color="#3c8024"  onPress={()=>{openModal()}}></Button>
+            </TouchableOpacity>
+          </View>
       </View>
       <View>
         <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={()=>{closeModal()}}>
           <View style={styles.modalFill}/>
           <View style={styles.modalContent}>
-            <TransactionPage item={props.item} seller={props.sellerName} price={props.price}/>
+            <TransactionPage style={styles.transactionText} item={props.item} seller={props.sellerName} price={props.price}/>
             <Button title="Submit Transaction" onPress={()=>{purchase()}}/>
             <Button title="Cancel Transaction" onPress={()=>{closeModal()}}/>
           </View>
@@ -59,43 +62,54 @@ function ItemCard(props) {
 
 const styles = StyleSheet.create({
   textBox:{
-    margin: 2,
+    margin: 5,
     marginLeft: 4,
     flex:3
   },
   container:{
     flexDirection:'row',
-    margin:2,
-    borderColor: 'black',
-    borderWidth: 1,
-    backgroundColor: '#D3D3D3',
+    borderBottomColor: '#f7f7f7',
+    borderWidth: .5,
+    backgroundColor: '#FFF',
     opacity:opacityState
   },
   button:{
-    flex:1,
-    backgroundColor: '#00AB66',
+    marginTop: 20,
+    marginRight: 10
   },
   bText:{
     alignSelf:'center',
     alignContent:'center'
   },
   image:{
-    height:70,
+    height: 'auto',
     width:50,
     flex: 1,
-    borderColor:'black',
-    borderWidth:1
   },
-  modalFill:{
-    flex:1,
 
+  itemText:{
+    fontSize: 20,
+    color: '#CF0202'
+  },
+
+  sellerText:{
+    fontStyle: 'italic'
+  },
+
+  priceText:{
+    fontSize: 17
+  },
+
+  modalFill:{
+    flex:1
   },
   modalContent:{
 
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 20,
     backgroundColor:'grey',
-
-    flex:6,
-    marginTop:'auto'
-  }
+    flex: 6
+  },
 });
 export default ItemCard;

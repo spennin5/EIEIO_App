@@ -5,7 +5,7 @@ Error Handling: This file contains checks for password matching and password len
 Author: Sam Pennington
 */
 import * as React from 'react';
-import { View, Text, TextInput, Button, StyleSheet, ImageBackground} from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, ImageBackground, KeyboardAvoidingView} from 'react-native';
 import {useState} from 'react';
 import {Picker} from '@react-native-picker/picker';
 import {User} from '../Components/DataConnector.js';
@@ -44,50 +44,52 @@ export default function SignUp({navigation}){
   return(
     <View style={styles.container}>
       <ImageBackground source={require("../Resources/tomatoes-2.jpeg")} resizeMode="cover" style={styles.image}>
-      
+      <KeyboardAvoidingView>
       <View style={styles.inner}>
       
       <Text style={styles.fontColor}>Name: </Text>
       <View style={styles.input}>
-        <TextInput onChangeText={text=>setName(text)}/>
+        <TextInput color="#FFF" onChangeText={text=>setName(text)}/>
       </View>
 
       <Text style={styles.fontColor}>Username: </Text>
       <View style={styles.input}>
-        <TextInput onChangeText={text=>setUsername(text)}/>
+        <TextInput color="#FFF" onChangeText={text=>setUsername(text)}/>
       </View>
       
       <Text style={styles.fontColor}>Password: </Text>
       <View style={styles.input}>
-        <TextInput onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
+        <TextInput color="#FFF" onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
       </View>
       
       <Text style={styles.fontColor}>Confirm Password: </Text>
       <View style={styles.input}>
-        <TextInput onChangeText={text=>setConfirmPassword(text)} secureTextEntity={true}/>
+        <TextInput color="#FFF" onChangeText={text=>setConfirmPassword(text)} secureTextEntity={true}/>
       </View>
       
       <Text style={styles.fontColor}>Email: </Text>
       <View style={styles.input}>
-        <TextInput onChangeText={text=>setEmail(text)}/>
+        <TextInput color="#FFF" onChangeText={text=>setEmail(text)}/>
       </View>
       
       <Text style={styles.fontColor}>Zip Code: </Text>
       <View style={styles.input}>
-        <TextInput onChangeText={text=>setZipcode(text)}/>
+        <TextInput color="#FFF" onChangeText={text=>setZipcode(text)}/>
       </View>
       
       <Text style={styles.fontColor}>Profile Type: </Text>
       <Picker style={styles.picker} selectedValue={selectedUserType}
         onValueChange={(itemValue, itemIndex) =>
           setSelectedUserType(itemValue)}>
-        <Picker.Item label="Buyer" value="buyer" />
-        <Picker.Item label="Seller" value="seller" />
+          <Picker.Item style={styles.pickerItems} label="Buyer" value="buyer" />
+          <Picker.Item style={styles.pickerItems} label="Seller" value="seller" />
       </Picker>
       <View style={styles.submitButton}>
       <Button color="#CF0202" title="Submit" onPress = {()=>ValidatePassMatch()}/>
       </View>
       </View>
+      </KeyboardAvoidingView>
+      
       </ImageBackground>
     </View>
   );
@@ -131,8 +133,13 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginTop: 10,
     paddingTop: 10,
-    paddingBottom: 10,
+    paddingBottom: 20,
   },
+
+  // pickerItems: {
+  //   borderWidth: 2,
+  //   borderColor: 'white'
+  // },
 
   submitButton:{
     padding: 20,

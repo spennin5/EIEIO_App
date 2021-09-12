@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
   text: {
     color: 'black',
     justifyContent:"center",
-    fontSize: 25
+    fontSize: 20,
+    textDecorationLine: 'underline'
   },
   touchable:{
     backgroundColor: 'rgba(52, 52, 52, 0.0)',
