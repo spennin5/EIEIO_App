@@ -9,6 +9,7 @@ import { View, Text, TextInput, Button, StyleSheet, ImageBackground, KeyboardAvo
 import {useState} from 'react';
 import {Picker} from '@react-native-picker/picker';
 import {User} from '../Components/DataConnector.js';
+import { ScrollView } from 'react-native-gesture-handler';
 export default function SignUp({navigation}){
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -44,8 +45,8 @@ export default function SignUp({navigation}){
   return(
     <View style={styles.container}>
       <ImageBackground source={require("../Resources/tomatoes-2.jpeg")} resizeMode="cover" style={styles.image}>
-      <KeyboardAvoidingView>
-      <View style={styles.inner}>
+      <KeyboardAvoidingView style={{flex: 1}} enabled={true}>
+      <ScrollView style={styles.inner}>
       
       <Text style={styles.fontColor}>Name: </Text>
       <View style={styles.input}>
@@ -87,7 +88,7 @@ export default function SignUp({navigation}){
       <View style={styles.submitButton}>
       <Button color="#CF0202" title="Submit" onPress = {()=>ValidatePassMatch()}/>
       </View>
-      </View>
+      </ScrollView>
       </KeyboardAvoidingView>
       
       </ImageBackground>

@@ -44,7 +44,9 @@ export default function BuyerHome({navigation}){
       </View>
       <View>
         <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={()=>{setModalVisible(!modalVisible)}}>
-          <Button title="X" onPress={()=>{setModalVisible(!modalVisible)}}/>
+          <View style={styles.mapExitButton}>
+            <Button title="Exit Map" color="#CF0202" onPress={()=>{setModalVisible(!modalVisible)}}/>
+          </View>
           <MapPage zipCode={searchZip}/>
         </Modal>
       </View>
@@ -78,5 +80,10 @@ const styles=StyleSheet.create({
 
   modal:{
     flex:1
+  },
+
+  mapExitButton: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
   }
 });
