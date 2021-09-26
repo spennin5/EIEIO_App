@@ -10,6 +10,7 @@ import {useState} from 'react';
 import {Picker} from '@react-native-picker/picker';
 import {User} from '../Components/DataConnector.js';
 import { ScrollView } from 'react-native-gesture-handler';
+import { Icon } from 'react-native-elements/dist/icons/Icon';
 export default function SignUp({navigation}){
   const [username,setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -79,12 +80,14 @@ export default function SignUp({navigation}){
       </View>
       
       <Text style={styles.fontColor}>Profile Type: </Text>
+      <View style={styles.pickerView}>
       <Picker style={styles.picker} selectedValue={selectedUserType}
         onValueChange={(itemValue, itemIndex) =>
           setSelectedUserType(itemValue)}>
           <Picker.Item style={styles.pickerItems} label="Buyer" value="buyer" />
           <Picker.Item style={styles.pickerItems} label="Seller" value="seller" />
       </Picker>
+      </View>
       <View style={styles.submitButton}>
       <Button color="#CF0202" title="Submit" onPress = {()=>ValidatePassMatch()}/>
       </View>
@@ -132,15 +135,19 @@ const styles = StyleSheet.create({
     color: 'white',
     marginLeft: 15,
     marginRight: 20,
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 20,
+    backgroundColor: 'transparent'
   },
 
-  // pickerItems: {
-  //   borderWidth: 2,
-  //   borderColor: 'white'
-  // },
+  pickerView: {
+    borderWidth: 2,
+    borderColor: 'white',
+    borderRadius: 15,
+    marginTop: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
 
   submitButton:{
     padding: 20,
