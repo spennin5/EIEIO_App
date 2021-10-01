@@ -72,7 +72,7 @@ export default function BuyerHome({navigation}){
         </Modal>
       </View>
       <View style={styles.cartView}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('CartPage')}>
           <BadgedIcon type="ionicon" name="cart-outline" />
         </TouchableOpacity>
       </View>
