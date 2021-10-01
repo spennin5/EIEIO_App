@@ -45,10 +45,12 @@ export default function App() {
           <UserContext.Provider value = {[user,setUser]}>
             <CartContext.Provider value = {[cart,setCart]}>
               <NavigationContainer>
+              
                 <Stack.Navigator>
                   <Stack.Screen name = "BuyerHome" component = {BuyerHomePage}/>
                   <Stack.Screen name = "CartPage" component = {CartPage}/>
                 </Stack.Navigator>
+
               </NavigationContainer>
             </CartContext.Provider>
           </UserContext.Provider>

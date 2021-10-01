@@ -3,7 +3,17 @@ import { StyleSheet, View, Text, Image,TouchableOpacity,Modal,Button,TextInput, 
 import {CartContext} from '../Components/Context.js'
 export default function CartPage(props){
   const [cart,setCart] = React.useContext(CartContext);
+  let keyArray = Object.keys(cart);
   return(
-    <Text>{cart[0].item}</Text>
-  );
+    <View>
+    {
+      keyArray.map((key)=>{
+        return(
+          <Text>{key}</Text>
+        )
+      })
+    }
+    </View>
+  )
+
 }

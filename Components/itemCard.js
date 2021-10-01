@@ -16,6 +16,9 @@ function ItemCard(props) {
   const [modalVisible,setModalVisible] = React.useState(false);
   const [opacityVal,setOpacityVal] = React.useState(.9);
   const [cart,setCart] = React.useContext(CartContext);
+  const [buttonTitle, setButtonTitle] = React.useState("Add to Cart");
+  const [buttonColor, setButtonColor] = React.useState("#3c8024");
+  let itemInCart = true;
   function openModal(){
     setModalVisible(true);
     setOpacityVal(.1);
@@ -31,15 +34,35 @@ function ItemCard(props) {
 
     var newItem = {'item':props.item,'seller':props.sellerName,'price':props.price};
     if(cart==null){
-      setCart([newItem])
+      var newCart = {};
+      newCart[props.item] = newItem;
+      setCart(newCart)
+      itemInCart = true;
+      setButtonTitle("Remove")
+      setButtonColor("red")
     }
     else{
+
       var currentCart = cart;
-      currentCart.push(newItem);
-      setCart(currentCart);
+      if(!itemInCart){
+        currentCart[props.item] = newItem;
+        setCart(currentCart);
+        console.log(cart)
+        itemInCart = true;
+        setButtonTitle("Remove")
+        setButtonColor("red")
+      }
+      else{
+        delete currentCart[props.item]
+        setCart(currentCart)
+        console.log(currentCart)
+        itemInCart = false;
+        setButtonTitle("Add to Cart")
+        setButtonColor("#3c8024")
+      }
     }
-    //console.log("new item: "+cart[0].item+cart[1].item+cart[2].item);
   }
+
   return(
     <View>
       <View style={[styles.container,{opacity:opacityVal}]}>
@@ -55,9 +78,11 @@ function ItemCard(props) {
           Changed the Buy Now buttons to actual buttons because as text, they aren't as accessible when using Android Talkback or other assistive tech
           */}
           <View style={styles.button}>
-            <TouchableOpacity>
-              <Button title="Add to Cart" color="#3c8024"  onPress={()=>{addToCart()}}></Button>
-            </TouchableOpacity>
+
+              <TouchableOpacity>
+                <Button title={buttonTitle} color={buttonColor}  onPress={()=>{addToCart()}}></Button>
+              </TouchableOpacity>
+
           </View>
       </View>
       <View>

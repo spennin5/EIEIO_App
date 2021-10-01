@@ -24,7 +24,7 @@ export default function BuyerHome({navigation}){
   const [modalVisible,setModalVisible] = React.useState(false);
   let [cart,setCart] = React.useContext(CartContext);
   let [count,setCount] = React.useState(0);
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     const interval = setInterval(() => {
       if(cart!=null){
         setCount(cart.length)
@@ -34,7 +34,7 @@ export default function BuyerHome({navigation}){
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, []);*/
 
   let BadgedIcon = withBadge(count)(Icon)
 
@@ -47,9 +47,9 @@ export default function BuyerHome({navigation}){
     }
   }
   function toCart(){
-    if(cart!=null){
+
       navigation.navigate('CartPage')
-    }
+
 
   }
   return(
