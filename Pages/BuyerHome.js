@@ -47,7 +47,10 @@ export default function BuyerHome({navigation}){
     }
   }
   function toCart(){
-    navigation.navigate('CartPage')
+    if(cart!=null){
+      navigation.navigate('CartPage')
+    }
+
   }
   return(
     <View style={styles.view}>
