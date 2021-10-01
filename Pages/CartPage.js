@@ -4,6 +4,6 @@ import {CartContext} from '../Components/Context.js'
 export default function CartPage(props){
   const [cart,setCart] = React.useContext(CartContext);
   return(
-    <Text>Hello</Text>
+    <Text>{cart[0].item}</Text>
   );
 }

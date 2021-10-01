@@ -28,7 +28,6 @@ export default function BuyerHome({navigation}){
     const interval = setInterval(() => {
       if(cart!=null){
         setCount(cart.length)
-        console.log(count)
       }
       else{
         count = 0
@@ -47,7 +46,9 @@ export default function BuyerHome({navigation}){
       setSearchZip(zip);
     }
   }
-
+  function toCart(){
+    navigation.navigate('CartPage')
+  }
   return(
     <View style={styles.view}>
       <View style={styles.topRow}>
@@ -72,8 +73,8 @@ export default function BuyerHome({navigation}){
         </Modal>
       </View>
       <View style={styles.cartView}>
-        <TouchableOpacity onPress={()=>navigation.navigate('CartPage')}>
-          <BadgedIcon type="ionicon" name="cart-outline" />
+        <TouchableOpacity>
+          <BadgedIcon type="ionicon" name="cart-outline" onPress={()=>toCart()}/>
         </TouchableOpacity>
       </View>
     </View>
