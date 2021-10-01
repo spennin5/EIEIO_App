@@ -44,7 +44,7 @@ export default function SelectPhoto(){
 
   return (
     <View style={styles.photoSelectorContainer}>
-      <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} />
+      {/* <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} /> */}
 
 
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
@@ -82,11 +82,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: '#3c8024',
+    backgroundColor: '#CF0202',
     padding: 20,
     borderRadius: 5,
     marginRight: 'auto',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    marginTop: 20
   },
   buttonText: {
     fontSize: 20,

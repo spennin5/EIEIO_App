@@ -16,14 +16,20 @@ export default function Home({navigation}){
     <TopBar/>
 
     <View style={styles.inputContainer}>
-      <Text style={styles.label}>Item Name:</Text>
-      <TextInput style={styles.input}></TextInput>
 
-      <Text style={styles.label}>Price: </Text>
-      <TextInput style={styles.input}></TextInput>
+    <Text style={styles.headingText}>Add a New Item</Text>
+    <Text style={styles.helperText}>Enter information about an item that you would like to sell.</Text>
+
+        <Text style={styles.label}>Item Name</Text>
+        <TextInput style={styles.input}></TextInput>
+
+      
+        <Text style={styles.label}>Price</Text>
+        <TextInput style={styles.input}></TextInput>
 
       <SelectPhoto/>
     </View>
+    
     </View>
 
   );
@@ -41,20 +47,33 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     padding: 20,
-    borderColor: 'gray'
+    borderColor: 'gray',
+  },
+
+  headingText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+
+  helperText: {
+    fontSize: 12,
+    fontStyle: 'italic',
+    marginBottom: 10
   },
 
   label:{
     fontWeight: 'bold',
     fontSize: 20,
-    marginBottom: 10
+    marginBottom: 10,
   },
 
   input:{
     borderWidth: 1,
-    borderRadius: 10,
     marginBottom: 10,
+    borderColor: 'gray',
     fontSize: 17,
-    paddingLeft: 10
+    paddingLeft: 10,
+    backgroundColor: 'white'
   },
 });
