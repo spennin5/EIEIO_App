@@ -11,9 +11,10 @@ import SignUpPage from './Pages/SignUp.js';
 import SellerHomePage from './Pages/SellerHome.js';
 import BuyerHomePage from './Pages/BuyerHome.js';
 import NewItemPage from './Pages/NewItem.js';
+import CartPage from './Pages/CartPage.js';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {AuthContext,UserContext} from './Components/Context.js';
+import {AuthContext,UserContext,CartContext} from './Components/Context.js';
 
 const Stack = createStackNavigator();
 
@@ -21,11 +22,13 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSeller, setIsSeller] = useState(false);
   const [user, setUser] = useState(null);
+  const [cart, setCart] = useState(null);
   if(isLoggedIn){
     if(isSeller){
       return(
         <AuthContext.Provider value = {{isLoggedIn:[isLoggedIn,setIsLoggedIn],isSeller:[isSeller,setIsSeller]}}>
           <UserContext.Provider value = {[user,setUser]}>
+
             <NavigationContainer>
               <Stack.Navigator>
                 <Stack.Screen name = "SellerHome" component = {SellerHomePage}/>
@@ -40,12 +43,14 @@ export default function App() {
       return(
         <AuthContext.Provider value = {{isLoggedIn:[isLoggedIn,setIsLoggedIn],isSeller:[isSeller,setIsSeller]}}>
           <UserContext.Provider value = {[user,setUser]}>
-            <NavigationContainer>
-              <Stack.Navigator>
-                <Stack.Screen name = "BuyerHome" component = {BuyerHomePage}/>
-
-              </Stack.Navigator>
-            </NavigationContainer>
+            <CartContext.Provider value = {[cart,setCart]}>
+              <NavigationContainer>
+                <Stack.Navigator>
+                  <Stack.Screen name = "BuyerHome" component = {BuyerHomePage}/>
+                  <Stack.Screen name = "CartPage" component = {CartPage}/>
+                </Stack.Navigator>
+              </NavigationContainer>
+            </CartContext.Provider>
           </UserContext.Provider>
         </AuthContext.Provider>
       );
@@ -68,5 +73,3 @@ export default function App() {
   }
 
 }
-
-

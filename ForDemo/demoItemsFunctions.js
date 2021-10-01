@@ -22,7 +22,7 @@ export default function DemoItems(props){
       {
         keyArray.map((key)=>{
           return(
-            <ItemCard  key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src}/>        
+            <ItemCard  key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src} id={itemsInCode[key].id}/>        
           )
         })
       }

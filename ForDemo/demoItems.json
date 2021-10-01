@@ -5,14 +5,16 @@
       "price":"$5",
       "src":"cucumber",
       "long":-83.38327,
-      "lat":33.95555
+      "lat":33.95555,
+      "id":1
     },
     "TheFruitGuy": {
       "item":"Strawberries",
       "price":"$7",
       "src": "strawberry",
       "long":-83.37327,
-      "lat": 33.92555
+      "lat": 33.92555,
+      "id":2
     }
   },
   "30041":{
@@ -20,8 +22,9 @@
       "item":"Grapes",
       "price":"$11",
       "src":"grapes",
-      "long":86.28,
-      "lat":86.28
+      "long":-86.28,
+      "lat":33.92555,
+      "id":3
     }
   }
 }

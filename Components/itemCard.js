@@ -9,11 +9,13 @@ import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity,Modal,Button,
 //const assets = require('../ForDemo/assets.js');
 import {AssetObject as assets} from '../Components/DataConnector.js';
 import TransactionPage from '../Pages/Transaction.js';
+import {CartContext} from './Context.js';
 var opacityState = .8;
 //Reusable component holding information about items for sale.
 function ItemCard(props) {
   const [modalVisible,setModalVisible] = React.useState(false);
   const [opacityVal,setOpacityVal] = React.useState(.9);
+  const [cart,setCart] = React.useContext(CartContext);
   function openModal(){
     setModalVisible(true);
     setOpacityVal(.1);
@@ -24,6 +26,19 @@ function ItemCard(props) {
   }
   function purchase(cardNum, cvv, expiration){
     return;
+  }
+  function addToCart(){
+
+    var newItem = {'item':props.item,'seller':props.sellerName,'price':props.price};
+    if(cart==null){
+      setCart([newItem])
+    }
+    else{
+      var currentCart = cart;
+      currentCart.push(newItem);
+      setCart(currentCart);
+    }
+    //console.log("new item: "+cart[0].item+cart[1].item+cart[2].item);
   }
   return(
     <View>
@@ -36,12 +51,12 @@ function ItemCard(props) {
             <Text style={styles.priceText}>{props.price}</Text>
           </View>
 
-          {/* 
+          {/*
           Changed the Buy Now buttons to actual buttons because as text, they aren't as accessible when using Android Talkback or other assistive tech
           */}
           <View style={styles.button}>
             <TouchableOpacity>
-              <Button title="Buy Now" color="#3c8024"  onPress={()=>{openModal()}}></Button>
+              <Button title="Add to Cart" color="#3c8024"  onPress={()=>{addToCart()}}></Button>
             </TouchableOpacity>
           </View>
       </View>
