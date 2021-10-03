@@ -44,13 +44,13 @@ export default function MapPage(props){
 
 const styles = StyleSheet.create({
   container:{
-    flex: 1,
+    height: '100%',
     justifyContent: "center",
     alignItems: "center",
   },
   map:{
     width: "100%",
-    height: "90%"
+    height: "93%",
   }
 })
 const mapInitialRegion = {
