@@ -46,12 +46,7 @@ export default function BuyerHome({navigation}){
       setSearchZip(zip);
     }
   }
-  function toCart(){
 
-      navigation.navigate('CartPage')
-
-
-  }
   return(
     <View style={styles.view}>
       <View style={styles.topRow}>
@@ -76,8 +71,8 @@ export default function BuyerHome({navigation}){
         </Modal>
       </View>
       <View style={styles.cartView}>
-        <TouchableOpacity>
-          <BadgedIcon type="ionicon" name="cart-outline" onPress={()=>toCart()}/>
+        <TouchableOpacity onPress={()=>navigation.navigate('CartPage')}>
+          <BadgedIcon type="ionicon" name="cart-outline"/>
         </TouchableOpacity>
       </View>
     </View>
