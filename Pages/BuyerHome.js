@@ -36,7 +36,7 @@ export default function BuyerHome({navigation}){
     return () => clearInterval(interval);
   }, []);*/
 
-  let BadgedIcon = withBadge(count)(Icon)
+  let BadgedIcon = withBadge()(Icon)
 
 
 

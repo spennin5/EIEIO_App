@@ -49,6 +49,43 @@ export class User{
   }
 
 }
+
+export class ItemForSale{
+  constructor(name, price, localURI, seller){
+    this.item = name;
+    this.price = price;
+    this.src = localURI;
+    this.seller = seller;
+  }
+  async loadItems(){
+    let retrievedObj = await fs.readAsStringAsync(fs.documentDirectory+'items.txt');
+    console.log("Retrieved obj:" + retrievedObj)
+    return retrievedObj;
+  }
+  //Save current user to a local JSON file
+  async saveItem(){
+
+    //in case we make a boo-boo, this command deletes the old log file
+    //await fs.deleteAsync(fs.documentDirectory+"items.txt");
+    const fileInfo = await fs.getInfoAsync(fs.documentDirectory+"items.txt");
+    if(fileInfo.exists){
+      let oldItemObj = await this.loadItems();
+      console.log("old:"+oldItemObj);
+      oldItemObj = JSON.parse(oldItemObj);
+      oldItemObj[String(this.item)] = this;
+      console.log("new:"+Object.keys(oldItemObj));
+      let toSaveItemObj = JSON.stringify(oldItemObj);
+      await fs.writeAsStringAsync(fs.documentDirectory+'items.txt',toSaveItemObj);
+    }
+    else{
+      console.log("Writing new user file");
+      let newItemObj = {};
+      newItemObj[String(this.username)] = this;
+      newItemObj = JSON.stringify(newItemObj);
+      await fs.writeAsStringAsync(fs.documentDirectory+'items.txt',newItemObj);
+    }
+  }
+}
 /*
   Check if supplied username exists in the local storage file and if the password matches the record
   Parameters: 'inputUsername' and 'inputPassword' both hold the value submitted by the user on the login sceen
@@ -78,12 +115,7 @@ export async function authenticateUsers(inputUsername,inputPassword){
   }
 }
 
-export function saveItem(item){
 
-}
-export function loadItem(item){
-
-}
 
 export const AssetObject = {
   strawberry: require('../ForDemo/strawberry.jpg'),
