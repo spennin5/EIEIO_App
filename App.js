@@ -12,6 +12,8 @@ import SellerHomePage from './Pages/SellerHome.js';
 import BuyerHomePage from './Pages/BuyerHome.js';
 import NewItemPage from './Pages/NewItem.js';
 import CartPage from './Pages/CartPage.js';
+import SellerProfile from './Pages/SellerProfile.js'
+import ItemCard from './Components/itemCard.js'
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {AuthContext,UserContext,CartContext} from './Components/Context.js';
@@ -45,9 +47,11 @@ export default function App() {
           <UserContext.Provider value = {[user,setUser]}>
             <CartContext.Provider value = {[cart,setCart]}>
               <NavigationContainer>
-              
+
                 <Stack.Navigator>
                   <Stack.Screen name = "BuyerHome" component = {BuyerHomePage}/>
+                  <Stack.Screen name = "ItemCard" component = {ItemCard}/>
+                  <Stack.Screen name = "SellerProfile" component = {SellerProfile}/>
                   <Stack.Screen name = "CartPage" component = {CartPage}/>
                 </Stack.Navigator>
 
