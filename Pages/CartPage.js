@@ -2,12 +2,14 @@ import * as React from 'react';
 import {Table, TableWrapper, Row, Cell, Rows } from 'react-native-table-component';
 import { StyleSheet, View, Text, Image,TouchableOpacity,Modal,Button,TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
 import {CartContext} from '../Components/Context.js'
+import {Transaction} from './Transaction.js'
 export default function CartPage(props){
   const [cart,setCart] = React.useContext(CartContext);
   if(cart==null || Object.keys(cart).length == 0){
     return(
       <TouchableOpacity onPress={()=>props.navigation.navigate('BuyerHome')}>
-        <Text>Return To Page</Text>
+        <Text>Sorry! Your Cart is Empty!</Text>
+        <Text>Please Add Items to Your Cart to Continue</Text>
       </TouchableOpacity>
     )
   }
@@ -17,7 +19,7 @@ export default function CartPage(props){
     var tableHeaders = ['Item','Seller','Price'];
     var tableFooter = ["","Total"]
     var tableData = []
-    console.log(Object.keys(cart))
+    
     for (const [key, value] of Object.entries(cart)) {
       console.log(`${key}: ${value.seller}`);
       tableData.push([value.item,value.seller,value.price])
@@ -35,6 +37,9 @@ export default function CartPage(props){
             <Rows data={tableData} />
             <Row data={tableFooter} />
           </Table>
+          <TouchableOpacity onPress={()=>{props.navigation.navigate('TransactionPage',{total:totalPrice})}}>
+            <Text>Check Out</Text>
+          </TouchableOpacity>
         </View>
       )
   }

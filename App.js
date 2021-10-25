@@ -12,6 +12,10 @@ import SellerHomePage from './Pages/SellerHome.js';
 import BuyerHomePage from './Pages/BuyerHome.js';
 import NewItemPage from './Pages/NewItem.js';
 import CartPage from './Pages/CartPage.js';
+import SellerProfile from './Pages/SellerProfile.js'
+import Transaction from './Pages/Transaction.js'
+import ItemCard from './Components/itemCard.js'
+import OrderConfirm from './Pages/OrderConfirmPage.js'
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {AuthContext,UserContext,CartContext} from './Components/Context.js';
@@ -23,6 +27,9 @@ export default function App() {
   const [isSeller, setIsSeller] = useState(false);
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState(null);
+  Stack.Navigator.navigationOptions = {
+    headerShown:false
+  }
   if(isLoggedIn){
     if(isSeller){
       return(
@@ -31,8 +38,8 @@ export default function App() {
 
             <NavigationContainer>
               <Stack.Navigator>
-                <Stack.Screen name = "SellerHome" component = {SellerHomePage}/>
-                <Stack.Screen name = "NewItem" component = {NewItemPage}/>
+                <Stack.Screen options={{title:"Home"}} name = "SellerHome" component = {SellerHomePage}/>
+                <Stack.Screen options={{title:"Add New Item"}} name = "NewItem" component = {NewItemPage}/>
               </Stack.Navigator>
             </NavigationContainer>
           </UserContext.Provider>
@@ -45,10 +52,15 @@ export default function App() {
           <UserContext.Provider value = {[user,setUser]}>
             <CartContext.Provider value = {[cart,setCart]}>
               <NavigationContainer>
-              
+
                 <Stack.Navigator>
-                  <Stack.Screen name = "BuyerHome" component = {BuyerHomePage}/>
-                  <Stack.Screen name = "CartPage" component = {CartPage}/>
+                  <Stack.Screen options={{title:"Home"}} name = "BuyerHome" component = {BuyerHomePage} />
+                  <Stack.Screen name = "ItemCard" component = {ItemCard}/>
+                  <Stack.Screen options={{title:""}} name = "SellerProfile" component = {SellerProfile}/>
+                  <Stack.Screen options={{title:"Your Cart"}} name = "CartPage" component = {CartPage}/>
+                  <Stack.Screen options={{title:"Check Out"}} name = "TransactionPage" component = {Transaction} />
+                  <Stack.Screen options={{title:""}} name = "OrderConfirm" component = {OrderConfirm} />
+
                 </Stack.Navigator>
 
               </NavigationContainer>
@@ -64,8 +76,8 @@ export default function App() {
         <UserContext.Provider value = {[user,setUser]}>
           <NavigationContainer>
             <Stack.Navigator>
-              <Stack.Screen name="Login" component={LoginPage}/>
-              <Stack.Screen name = "SignUp" component = {SignUpPage}/>
+              <Stack.Screen options={{title:""}} name="Login" component={LoginPage}/>
+              <Stack.Screen options={{title:"Sign Up!"}} name = "SignUp" component = {SignUpPage}/>
             </Stack.Navigator>
           </NavigationContainer>
         </UserContext.Provider>

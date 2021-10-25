@@ -43,7 +43,7 @@ export  default function SellerHome({navigation}){
     var tableHeaders = ['Item','Seller','Price'];
     var tableData = []
     for(const [key,value] of Object.entries(itemData)){
-      console.log(`${key}: ${value.seller}`);
+      
       tableData.push([value.item,value.seller,value.price])
     }
     return(

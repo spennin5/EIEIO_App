@@ -41,10 +41,7 @@ export default function Home({navigation}){
   );
   async function saveNewItem(){
 
-    console.log(newItemName)
-    console.log(newItemName)
-    console.log(newItemPrice)
-    console.log(selectedImage.localUri)
+    
     if(newItemName!='' && newItemPrice>0 && selectedImage.localUri!=null){
       let itemForSale = new ItemForSale(newItemName,newItemPrice,selectedImage.localUri,user.name)
       await itemForSale.saveItem();

@@ -120,7 +120,9 @@ export async function authenticateUsers(inputUsername,inputPassword){
 export const AssetObject = {
   strawberry: require('../ForDemo/strawberry.jpg'),
   cucumber: require('../ForDemo/cucumber.jpg'),
-  grapes: require('../ForDemo/grapes.jpg')
+  grapes: require('../ForDemo/grapes.jpg'),
+  sellerPicture: require('../ForDemo/sellerPic.jpg'),
+  buyerPicture: require('../ForDemo/buyerPic.jpg'),
 }
 
 //module.exports = AssetObject

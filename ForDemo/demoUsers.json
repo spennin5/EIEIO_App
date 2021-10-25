@@ -1,0 +1,8 @@
+{
+  "VeggieSeller5": {
+    "name":"Todd McVeggie",
+    "rating":4.5,
+    "src":"sellerPicture",
+    "type":"seller"
+  },
+}

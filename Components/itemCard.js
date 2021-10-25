@@ -10,6 +10,7 @@ import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity,Modal,Button,
 import {AssetObject as assets} from '../Components/DataConnector.js';
 import TransactionPage from '../Pages/Transaction.js';
 import {CartContext} from './Context.js';
+import {useNavigation} from '@react-navigation/native'
 var opacityState = .8;
 //Reusable component holding information about items for sale.
 function ItemCard(props) {
@@ -18,6 +19,7 @@ function ItemCard(props) {
   const [cart,setCart] = React.useContext(CartContext);
   const [buttonTitle, setButtonTitle] = React.useState("Add to Cart");
   const [buttonColor, setButtonColor] = React.useState("#3c8024");
+  const navigation = useNavigation();
   let itemInCart = true;
   function openModal(){
     setModalVisible(true);
@@ -70,7 +72,7 @@ function ItemCard(props) {
           <View style={styles.textBox}>
 
             <Text style={styles.itemText}>{props.item}</Text>
-            <Text style={styles.sellerText}>Sold by {props.sellerName}</Text>
+            <Text style={styles.sellerText}>Sold by <Text onPress={()=>navigation.navigate('SellerProfile',{sellerName:props.sellerName})}>{props.sellerName}</Text></Text>
             <Text style={styles.priceText}>{props.price}</Text>
           </View>
 
