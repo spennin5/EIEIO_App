@@ -11,11 +11,15 @@ export default function SellerProfile({route,props}){
   console.log("Here are our users: "+users[route.params.sellerName].name)
   let seller = users[route.params.sellerName]
   return(
+    <View style={styles.profileLayout}>
+    
     <View>
-    <Image source={assets[seller.src]}  />
-    <Text>{seller.name}</Text>
-    <Text>Rating: {seller.rating}</Text>
-      <View style={{alignItems:'center'}}>
+      <Image style={styles.profilePic} source={assets[seller.src]}  />
+      <Text style={styles.profileInfo}>{seller.name}</Text>
+      <Text style={styles.profileInfo}>Rating: {seller.rating}</Text>
+    </View>
+    
+      <View style={{alignItems:'center', paddingTop: 20}}>
         <Stars
           default={seller.rating}
 
@@ -34,8 +38,26 @@ export default function SellerProfile({route,props}){
   )
 }
 const styles = StyleSheet.create({
+
+  profileLayout: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+
+  profileInfo: {
+    fontSize: 20,
+    paddingTop: 10,
+    paddingLeft: 5,
+    fontWeight: 'bold'
+  },
+
+  profilePic: {
+    maxHeight: 150,
+    maxWidth: 150
+  },
+
   myStarStyle: {
-    color: 'yellow',
+    color: '#3c8024',
     backgroundColor: 'transparent',
     textShadowColor: 'black',
     justifyContent:'center',
@@ -48,7 +70,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   starView:{
-    height: 500,
+    height: 100,
     width: 50,
     alignItems:'center'
   }
