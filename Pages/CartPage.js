@@ -3,6 +3,7 @@ import {Table, TableWrapper, Row, Cell, Rows } from 'react-native-table-componen
 import { StyleSheet, View, Text, Image,TouchableOpacity,Modal,Button,TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
 import {CartContext} from '../Components/Context.js'
 import {Transaction} from './Transaction.js'
+import TopBar from '../Components/topBar.js';
 export default function CartPage(props){
   const [cart,setCart] = React.useContext(CartContext);
   if(cart==null || Object.keys(cart).length == 0){
@@ -19,7 +20,7 @@ export default function CartPage(props){
     var tableHeaders = ['Item','Seller','Price'];
     var tableFooter = ["","Total"]
     var tableData = []
-    
+
     for (const [key, value] of Object.entries(cart)) {
       console.log(`${key}: ${value.seller}`);
       tableData.push([value.item,value.seller,value.price])
@@ -32,6 +33,7 @@ export default function CartPage(props){
     return(
 
       <View >
+        <TopBar/>
           <Table>
             <Row style={styles.tableHeaderStyle} data={tableHeaders} />
             <Rows style={styles.tableDataStyle} data={tableData} />

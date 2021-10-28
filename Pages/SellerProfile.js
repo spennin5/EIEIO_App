@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View,ScrollView, Text, Image,TouchableOpacity,Modal,Button, Touchable } from 'react-native';
 import {AssetObject as assets} from '../Components/DataConnector.js';
 import users from '../ForDemo/demoUsers.json';
-
+import TopBar from '../Components/topBar.js';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -12,13 +12,13 @@ export default function SellerProfile({route,props}){
   let seller = users[route.params.sellerName]
   return(
     <View style={styles.profileLayout}>
-    
+    <TopBar/>
     <View>
       <Image style={styles.profilePic} source={assets[seller.src]}  />
       <Text style={styles.profileInfo}>{seller.name}</Text>
       <Text style={styles.profileInfo}>Rating: {seller.rating}</Text>
     </View>
-    
+
       <View style={{alignItems:'center', paddingTop: 20}}>
         <Stars
           default={seller.rating}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image,TouchableOpacity,Modal,Button,TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
-
+import TopBar from '../Components/topBar.js';
 export default function TransactionPage({navigation,route,props}){
   const [ccNum, setCCNum] = React.useState();
   const [ccv, setCcv] = React.useState(null);
@@ -36,6 +36,7 @@ export default function TransactionPage({navigation,route,props}){
   }
   return(
     <KeyboardAvoidingView enabled={true}>
+      <TopBar/>
       <ScrollView style={styles.modal}>
         <Text style={styles.verifyItemsText}>Your total is ${route.params.total}!</Text>
         <Text style={styles.confirmationText}>Confirmation and pick up details will be sent upon transaction completion.</Text>
