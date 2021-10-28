@@ -45,6 +45,9 @@ export default function BuyerHome({navigation}){
     if(zip.length == 5){
       setSearchZip(zip);
     }
+    if(zip.length == 0){
+      setSearchZip('30602')
+    }
   }
 
   return(

@@ -5,4 +5,16 @@
     "src":"sellerPicture",
     "type":"seller"
   },
+  "TheFruitGuy": {
+    "name":"Greg McVeggie",
+    "rating":3.5,
+    "src":"sellerPicture",
+    "type":"seller"
+  },
+  "BerryNiceProduce":{
+    "name":"Gina VonFruit",
+    "rating":5,
+    "src":"buyerPicture",
+    "type":"buyer"
+  }
 }
