@@ -141,7 +141,8 @@ const styles = StyleSheet.create({
   },
 
   sellerText:{
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    textDecorationLine: 'underline'
   },
 
   priceText:{

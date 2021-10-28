@@ -64,7 +64,7 @@ export  default function SellerHome({navigation}){
   return(
     <View>
       <TopBar/>
-      <Text>You have no items for sale!</Text>
+      <Text style={styles.messageText}>You have no items for sale!</Text>
       <View style={styles.newItemButton}>
         <Button title="New Item" color="#3c8024" onPress={()=>navigation.navigate("NewItem")}/>
       </View>
@@ -77,5 +77,10 @@ const styles = StyleSheet.create({
   newItemButton:{
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+
+  messageText:{
+    paddingBottom: 20,
+    textAlign: 'center'
   }
 });

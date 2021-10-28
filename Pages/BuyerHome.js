@@ -62,8 +62,6 @@ export default function BuyerHome({navigation}){
       <View>
         <SearchBar style={styles.searchBar} placeholder="Find Produce in Your Zip Code" placeholderTextColor="#FFF" onChangeText={updateSearchZip} value={searchBoxVal}/>
         <DemoItems zipCode={searchZip}/>
-
-
       </View>
       <View>
         <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={()=>{setModalVisible(!modalVisible)}}>

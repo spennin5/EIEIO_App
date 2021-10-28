@@ -9,6 +9,7 @@ import * as SecureStore from 'expo-secure-store';
 import { View, Text, TextInput, Button, StyleSheet,TouchableOpacity,Image} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import {AuthContext,UserContext, CartContext} from '../Components/Context.js';
+import { ScrollView } from 'react-native-gesture-handler';
 
 import {ItemForSale} from '../Components/DataConnector.js';
 //import SelectPhoto from '../Components/selectPhotoComponent.js';
@@ -86,10 +87,11 @@ export default function Home({navigation}){
       <View style={styles.photoSelectorContainer}>
         {/* <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} /> */}
 
-
-        <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-          <Text style={styles.buttonText}>Pick a Photo of Your Item</Text>
-        </TouchableOpacity>
+        <ScrollView>
+          <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+            <Text style={styles.buttonText}>Pick a Photo of Your Item</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
       //<React.Fragment>
         //<MappingComponent/>

@@ -32,18 +32,55 @@ export default function CartPage(props){
     return(
 
       <View >
-          <Table borderStyle={{borderWidth: 1, borderColor: '#ffa1d2'}}>
-            <Row data={tableHeaders} />
-            <Rows data={tableData} />
-            <Row data={tableFooter} />
+          <Table>
+            <Row style={styles.tableHeaderStyle} data={tableHeaders} />
+            <Rows style={styles.tableDataStyle} data={tableData} />
+            <Row style={styles.tableFooterStyle} data={tableFooter} />
           </Table>
-          <TouchableOpacity onPress={()=>{props.navigation.navigate('TransactionPage',{total:totalPrice})}}>
-            <Text>Check Out</Text>
+          <TouchableOpacity style={styles.button} onPress={()=>{props.navigation.navigate('TransactionPage',{total:totalPrice})}}>
+            <Text style={styles.buttonText}>Check Out</Text>
           </TouchableOpacity>
         </View>
       )
   }
-
-
-
 }
+
+const styles = StyleSheet.create({
+  tableHeaderStyle: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    paddingBottom: 5,
+    paddingTop: 10,
+    paddingLeft: 50,
+  },
+
+  tableDataStyle: {
+    paddingLeft: 50,
+    paddingBottom: 10,
+    paddingTop: 5
+  },
+
+  tableFooterStyle: {
+    paddingLeft: 50,
+    borderTopWidth: 1,
+    borderTopColor: 'black',
+    paddingTop: 5
+  },
+
+  button: {
+    backgroundColor: '#3c8024',
+    padding: 10,
+    borderRadius: 5,
+    // marginRight: 'auto',
+    // marginLeft: 'auto',
+    marginTop: 20,
+    marginLeft: 5,
+    marginRight: 5
+  },
+
+  buttonText: {
+    fontSize: 15,
+    color: '#fff',
+    textAlign: 'center'
+  }
+});
