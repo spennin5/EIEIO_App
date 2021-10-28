@@ -20,6 +20,17 @@ function ItemCard(props) {
   const [buttonTitle, setButtonTitle] = React.useState("Add to Cart");
   const [buttonColor, setButtonColor] = React.useState("#3c8024");
   const navigation = useNavigation();
+  console.log("item card cart:"+cart)
+  React.useEffect(()=>{
+    let refresher = navigation.addListener("focus",()=>{
+      if(cart==null){
+        setButtonColor('green')
+        setButtonTitle("Add to Cart")
+      }
+    })
+
+  },[])
+
   let itemInCart = true;
   function openModal(){
     setModalVisible(true);

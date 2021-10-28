@@ -39,7 +39,7 @@ export default function BuyerHome({navigation}){
   let BadgedIcon = withBadge()(Icon)
 
 
-
+  console.log("buyer home cart:"+cart)
   function updateSearchZip(zip){
     setSearchBoxVal(zip);
     if(zip.length == 5){
