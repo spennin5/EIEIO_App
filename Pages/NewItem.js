@@ -22,7 +22,7 @@ export default function Home({navigation}){
   return(
     <View style={styles.container}>
     <TopBar/>
-
+    <ScrollView>
     <View style={styles.inputContainer}>
       <Text style={styles.headingText}>Add a New Item</Text>
       <Text style={styles.helperText}>Enter information about an item that you would like to sell.</Text>
@@ -31,11 +31,11 @@ export default function Home({navigation}){
       <Text style={styles.label}>Price</Text>
       <TextInput style={styles.input} onChangeText={text=>setNewItemPrice(text)}></TextInput>
       <SelectPhoto/>
-      <TouchableOpacity onPress={()=>saveNewItem()}>
-        <Text>List Item</Text>
+      <TouchableOpacity onPress={()=>saveNewItem()} style={styles.listItemButton}>
+        <Text style={styles.buttonText}>List Item For Sale</Text>
       </TouchableOpacity>
     </View>
-
+    </ScrollView>
     </View>
 
   );
@@ -75,10 +75,12 @@ export default function Home({navigation}){
     if (selectedImage !== null) {
       return (
         <View >
+          <ScrollView>
           <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
           <TouchableOpacity onPress={clearImageAsync} style={styles.button}>
             <Text style={styles.buttonText}>Clear Image</Text>
           </TouchableOpacity>
+          </ScrollView>
         </View>
       );
     }
@@ -86,12 +88,9 @@ export default function Home({navigation}){
     return (
       <View style={styles.photoSelectorContainer}>
         {/* <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} /> */}
-
-        <ScrollView>
           <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
             <Text style={styles.buttonText}>Pick a Photo of Your Item</Text>
           </TouchableOpacity>
-        </ScrollView>
       </View>
       //<React.Fragment>
         //<MappingComponent/>
@@ -160,19 +159,31 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#CF0202',
-    padding: 20,
+    padding: 10,
     borderRadius: 5,
     marginRight: 'auto',
     marginLeft: 'auto',
     marginTop: 20
   },
+
+  listItemButton: {
+    padding: 15,
+    borderRadius: 5,
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    marginTop: 20,
+    backgroundColor: '#3c8024'
+  },
+
   buttonText: {
     fontSize: 20,
     color: '#fff',
   },
   thumbnail: {
-    width: 300,
-    height: 300,
+    width: 200,
+    height: 200,
+    marginRight: 'auto',
+    marginLeft: 'auto',
     resizeMode: 'contain',
   },
 });
