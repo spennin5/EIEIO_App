@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Image,TouchableOpacity,Modal,Button,TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Picker,StyleSheet, View, Text, Image,TouchableOpacity,Modal,Button,TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
 import TopBar from '../Components/topBar.js';
+import { CardField, useStripe, CardForm } from '@stripe/stripe-react-native';
 export default function TransactionPage({navigation,route,props}){
   const [ccNum, setCCNum] = React.useState();
   const [ccv, setCcv] = React.useState(null);
@@ -8,16 +9,11 @@ export default function TransactionPage({navigation,route,props}){
   const [city, setCity] = React.useState("");
   const [state, setState] = React.useState("");
   const [email, setEmail] = React.useState("");
-
+  
   function validatePayment(){
     console.log(String(ccNum).length)
-    if(!(String(ccNum).length==16)){
-      alert("Please Fill in Credit Card")
-    }
-    else if(!(String(ccv).length==3)){
-      alert("Please Fill in CVV")
-    }
-    else if(billingAddress==""){
+
+    if(billingAddress==""){
       alert("Please Fill in Billing Address")
     }
     else if(city==""){
@@ -41,15 +37,36 @@ export default function TransactionPage({navigation,route,props}){
         <Text style={styles.verifyItemsText}>Your total is ${route.params.total}!</Text>
         <Text style={styles.confirmationText}>Confirmation and pick up details will be sent upon transaction completion.</Text>
         <View style={styles.transactionForm}>
-          <Text style={styles.label}>Card Number:</Text>
-          <TextInput onChangeText={text=>setCCNum(text)} style={styles.input} placeholder='Credit/Debit Card Number' placeholderTextColor='#727274'></TextInput>
-          <Text style={styles.label}>CVV:</Text>
-          <TextInput onChangeText={text=>setCcv(text)} style={styles.input} placeholder='CVV' placeholderTextColor='#727274'></TextInput>
+        <CardField
+          postalCodeEnabled={true}
+          placeholder={{
+            number: '4242 4242 4242 4242',
+          }}
+          cardStyle={{
+            backgroundColor: '#FFFFFF',
+            textColor: '#000000',
+          }}
+          style={{
+            width: '100%',
+            height: 50,
+            marginVertical: 30,
+          }}
+          onCardChange={(cardDetails) => {
+            console.log('cardDetails', cardDetails);
+            setCCNum(cardDetails)
+          }}
+          onFocus={(focusedField) => {
+            console.log('focusField', focusedField);
+          }}
+        />
+
+
           <Text style={styles.label}>Billing Address:</Text>
           <TextInput onChangeText={text=>setBillingAddress(text)} style={styles.input} placeholder='Billing Address' placeholderTextColor='#727274'></TextInput>
           <Text style={styles.label}>City:</Text>
           <TextInput onChangeText={text=>setCity(text)} style={styles.input} placeholder='City' placeholderTextColor='#727274'></TextInput>
           <Text style={styles.label}>State:</Text>
+
           <TextInput onChangeText={text=>setState(text)} style={styles.input} placeholder='GA' placeholderTextColor='#727274'></TextInput>
           <Text style={styles.label}>Confirmation Email Address:</Text>
           <TextInput onChangeText={text=>setEmail(text)} style={styles.input} placeholder='Email Address' placeholderTextColor='#727274'></TextInput>
