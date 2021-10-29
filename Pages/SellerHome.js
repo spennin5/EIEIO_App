@@ -49,9 +49,9 @@ export  default function SellerHome({navigation}){
     return(
       <View>
         <TopBar/>
-        <Table borderStyle={{borderWidth: 1, borderColor: '#ffa1d2'}}>
-          <Row data={tableHeaders} />
-          <Rows data={tableData} />
+        <Table>
+          <Row style={styles.tableHeaderStyle} textStyle={styles.headerText} data={tableHeaders} />
+          <Rows style={styles.tableDataStyle} textStyle={styles.lineItemText} data={tableData} />
 
         </Table>
         <View style={styles.newItemButton}>
@@ -77,10 +77,35 @@ const styles = StyleSheet.create({
   newItemButton:{
     marginLeft: 'auto',
     marginRight: 'auto',
+    paddingTop: 20
   },
 
   messageText:{
     paddingBottom: 20,
     textAlign: 'center'
-  }
+  },
+  tableHeaderStyle: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    paddingBottom: 5,
+    paddingTop: 10,
+  },
+
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+
+  tableDataStyle: {
+    paddingBottom: 10,
+    marginTop: 10,
+    paddingTop: 5
+  },
+
+  lineItemText: {
+    textAlign: 'center',
+    fontSize: 15,
+    fontStyle: 'italic'
+  },
 });

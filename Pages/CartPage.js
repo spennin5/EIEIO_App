@@ -35,9 +35,9 @@ export default function CartPage(props){
       <View >
         <TopBar/>
           <Table>
-            <Row style={styles.tableHeaderStyle} data={tableHeaders} />
-            <Rows style={styles.tableDataStyle} data={tableData} />
-            <Row style={styles.tableFooterStyle} data={tableFooter} />
+            <Row style={styles.tableHeaderStyle} textStyle={styles.headerText} data={tableHeaders} />
+            <Rows style={styles.tableDataStyle} textStyle={styles.lineItemText} data={tableData} />
+            <Row style={styles.tableFooterStyle} textStyle={styles.totalText} data={tableFooter} />
           </Table>
           <TouchableOpacity style={styles.button} onPress={()=>{props.navigation.navigate('TransactionPage',{total:totalPrice})}}>
             <Text style={styles.buttonText}>Check Out</Text>
@@ -53,20 +53,34 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black',
     paddingBottom: 5,
     paddingTop: 10,
-    paddingLeft: 50,
+  },
+
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
 
   tableDataStyle: {
-    paddingLeft: 50,
     paddingBottom: 10,
+    marginTop: 10,
     paddingTop: 5
   },
 
+  lineItemText: {
+    textAlign: 'center',
+    fontSize: 15,
+    fontStyle: 'italic'
+  },
+
   tableFooterStyle: {
-    paddingLeft: 50,
-    borderTopWidth: 1,
-    borderTopColor: 'black',
-    paddingTop: 5
+    paddingTop: 10
+  },
+
+  totalText: {
+    textAlign: 'center',
+    fontSize: 15,
+    fontWeight: 'bold'
   },
 
   button: {
