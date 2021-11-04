@@ -11,12 +11,14 @@ export default function SellerProfile({route,props}){
   console.log("Here are our users: "+users[route.params.sellerName].name)
   let seller = users[route.params.sellerName]
   return(
-    <View style={styles.profileLayout}>
-    <TopBar/>
     <View>
+    <TopBar/>
+    <View style={styles.profileLayout}>
       <Image style={styles.profilePic} source={assets[seller.src]}  />
-      <Text style={styles.profileInfo}>{seller.name}</Text>
-      <Text style={styles.profileInfo}>Rating: {seller.rating}</Text>
+      <View>
+        <Text style={styles.profileInfo}>{seller.name}</Text>
+        <Text style={styles.profileInfo}>Rating: {seller.rating}</Text>
+      </View>
     </View>
 
       <View style={{alignItems:'center', paddingTop: 20}}>
@@ -48,7 +50,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 10,
     paddingLeft: 5,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    flexDirection: 'column'
   },
 
   profilePic: {
