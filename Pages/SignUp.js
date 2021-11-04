@@ -61,12 +61,12 @@ export default function SignUp({navigation}){
       
       <Text style={styles.fontColor}>Password: </Text>
       <View style={styles.input}>
-        <TextInput color="#FFF" onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
+        <TextInput color="#FFF" secureTextEntry={true} onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
       </View>
       
       <Text style={styles.fontColor}>Confirm Password: </Text>
       <View style={styles.input}>
-        <TextInput color="#FFF" onChangeText={text=>setConfirmPassword(text)} secureTextEntity={true}/>
+        <TextInput color="#FFF" secureTextEntry={true}  onChangeText={text=>setConfirmPassword(text)} secureTextEntity={true}/>
       </View>
       
       <Text style={styles.fontColor}>Email: </Text>

@@ -55,7 +55,7 @@ function LoginPage({navigation}){
         
         <Text style={styles.fontColor}>Password: </Text>
         <View style={styles.input}>
-          <TextInput autoCapitalize='none' color="#FFF" onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
+          <TextInput secureTextEntry={true}  autoCapitalize='none' color="#FFF" onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
         </View>
         
         <View style={styles.buttonContainer}>
