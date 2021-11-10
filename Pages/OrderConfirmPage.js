@@ -16,8 +16,31 @@ export default function OrderConfirm({navigation}){
   return(
     <View>
       <TopBar/>
-      <Text>Thanks for Your Order!</Text>
-      <Text onPress={()=>returnHome()}>Return Home</Text>
+      <Text style={styles.confirmationText}>Thanks for Your Order!</Text>
+      <Text style={styles.button} onPress={()=>returnHome()}>Return Home</Text>
     </View>
   )
 }
+
+
+const styles = StyleSheet.create({
+
+  confirmationText: {
+    fontSize: 25,
+    textAlign: 'center'
+  },
+
+  button: {
+    backgroundColor: '#3c8024',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+    marginLeft: 5,
+    marginRight: 5,
+    color: 'white',
+    textAlign: 'center',
+     marginRight: 'auto',
+    marginLeft: 'auto',
+  }
+  
+});
