@@ -122,6 +122,7 @@ export const AssetObject = {
   cucumber: require('../ForDemo/cucumber.jpg'),
   grapes: require('../ForDemo/grapes.jpg'),
   sellerPicture: require('../ForDemo/sellerPic.jpg'),
+  sellerPicture2: require('../ForDemo/sellerPic2.jpg'),
   buyerPicture: require('../ForDemo/buyerPic.jpg'),
 }
 
