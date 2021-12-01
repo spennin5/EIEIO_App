@@ -8,7 +8,7 @@ Author: Sam Pennington
 import React from "react";
 import {Text, View,TouchableOpacity} from 'react-native';
 import ItemCard from "../Components/itemCard.js";
-
+//This changes to hook into your database
 var itemJson = require('./demoItems.json')
 
 export default function DemoItems(props){
@@ -22,7 +22,7 @@ export default function DemoItems(props){
       {
         keyArray.map((key)=>{
           return(
-            <ItemCard  key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src} id={itemsInCode[key].id}/>        
+            <ItemCard  key={itemsInCode[key].item} item={itemsInCode[key].item} sellerName={key} price={itemsInCode[key].price} source={itemsInCode[key].src} id={itemsInCode[key].id}/>
           )
         })
       }

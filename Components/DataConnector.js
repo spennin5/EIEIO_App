@@ -22,14 +22,16 @@ export class User{
   }
 
   async loadUsers(){
+    //Hook into database
     const retrievedObj = await fs.readAsStringAsync(fs.documentDirectory+"user.txt");
     return retrievedObj;
   }
   //Save current user to a local JSON file
   async saveUser(){
-    //in case we make a boo-boo, this command deletes the old log file
+    //in case we make a boo-boo, this command deletes the old log file when not on database
     //await fs.deleteAsync(fs.documentDirectory+"user.txt");
 
+    //Hook into database
     const fileInfo = await fs.getInfoAsync(fs.documentDirectory+"user.txt");
     if(fileInfo.exists){
       let oldUserObj = await this.loadUsers();
@@ -37,6 +39,7 @@ export class User{
       oldUserObj[String(this.username)] = this;
       console.log(oldUserObj);
       let toSaveUserObj = JSON.stringify(oldUserObj);
+      //Hook into database
       await fs.writeAsStringAsync(fs.documentDirectory+'user.txt',toSaveUserObj);
     }
     else{
@@ -44,6 +47,7 @@ export class User{
       let newUserObj = {};
       newUserObj[String(this.username)] = this;
       newUserObj = JSON.stringify(newUserObj);
+      //Hook into database
       await fs.writeAsStringAsync(fs.documentDirectory+'user.txt',newUserObj);
     }
   }
@@ -58,6 +62,7 @@ export class ItemForSale{
     this.seller = seller;
   }
   async loadItems(){
+    //Hook into database
     let retrievedObj = await fs.readAsStringAsync(fs.documentDirectory+'items.txt');
     console.log("Retrieved obj:" + retrievedObj)
     return retrievedObj;
@@ -66,7 +71,9 @@ export class ItemForSale{
   async saveItem(){
 
     //in case we make a boo-boo, this command deletes the old log file
-    //await fs.deleteAsync(fs.documentDirectory+"items.txt");
+    //wait fs.deleteAsync(fs.documentDirectory+"items.txt");
+
+    //Hook into database
     const fileInfo = await fs.getInfoAsync(fs.documentDirectory+"items.txt");
     if(fileInfo.exists){
       let oldItemObj = await this.loadItems();
@@ -75,6 +82,7 @@ export class ItemForSale{
       oldItemObj[String(this.item)] = this;
       console.log("new:"+Object.keys(oldItemObj));
       let toSaveItemObj = JSON.stringify(oldItemObj);
+      //Hook into database
       await fs.writeAsStringAsync(fs.documentDirectory+'items.txt',toSaveItemObj);
     }
     else{
@@ -82,6 +90,7 @@ export class ItemForSale{
       let newItemObj = {};
       newItemObj[String(this.username)] = this;
       newItemObj = JSON.stringify(newItemObj);
+      //Hook into database
       await fs.writeAsStringAsync(fs.documentDirectory+'items.txt',newItemObj);
     }
   }
@@ -93,6 +102,7 @@ export class ItemForSale{
   Author: Sam Pennington
 */
 export async function authenticateUsers(inputUsername,inputPassword){
+  //Hook into database
   let retrievedObj = await fs.readAsStringAsync(fs.documentDirectory+"user.txt");
   retrievedObj = JSON.parse(retrievedObj);
   let usernameSet = Object.keys(retrievedObj);
@@ -116,7 +126,7 @@ export async function authenticateUsers(inputUsername,inputPassword){
 }
 
 
-
+//Hook into database
 export const AssetObject = {
   strawberry: require('../ForDemo/strawberry.jpg'),
   cucumber: require('../ForDemo/cucumber.jpg'),

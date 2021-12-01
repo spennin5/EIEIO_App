@@ -5,11 +5,11 @@ import { CardField, useStripe, CardForm } from '@stripe/stripe-react-native';
 export default function TransactionPage({navigation,route,props}){
   const [ccNum, setCCNum] = React.useState();
   const [ccv, setCcv] = React.useState(null);
-  const [billingAddress, setBillingAddress] = React.useState("");
-  const [city, setCity] = React.useState("");
-  const [state, setState] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  
+  const [billingAddress, setBillingAddress] = React.useState("123 Main Street");
+  const [city, setCity] = React.useState("Athens");
+  const [state, setState] = React.useState("GA");
+  const [email, setEmail] = React.useState("barry@buyer.com");
+
   function validatePayment(){
     console.log(String(ccNum).length)
 
@@ -62,14 +62,14 @@ export default function TransactionPage({navigation,route,props}){
 
 
           <Text style={styles.label}>Billing Address:</Text>
-          <TextInput onChangeText={text=>setBillingAddress(text)} style={styles.input} placeholder='Billing Address' placeholderTextColor='#727274'></TextInput>
+          <TextInput value="123 Main Street" onChangeText={text=>setBillingAddress(text)} style={styles.input} placeholder='Billing Address' placeholderTextColor='#727274'></TextInput>
           <Text style={styles.label}>City:</Text>
-          <TextInput onChangeText={text=>setCity(text)} style={styles.input} placeholder='City' placeholderTextColor='#727274'></TextInput>
+          <TextInput value="Athens" onChangeText={text=>setCity(text)} style={styles.input} placeholder='City' placeholderTextColor='#727274'></TextInput>
           <Text style={styles.label}>State:</Text>
 
-          <TextInput onChangeText={text=>setState(text)} style={styles.input} placeholder='GA' placeholderTextColor='#727274'></TextInput>
+          <TextInput value="GA" onChangeText={text=>setState(text)} style={styles.input} placeholder='GA' placeholderTextColor='#727274'></TextInput>
           <Text style={styles.label}>Confirmation Email Address:</Text>
-          <TextInput onChangeText={text=>setEmail(text)} style={styles.input} placeholder='Email Address' placeholderTextColor='#727274'></TextInput>
+          <TextInput value="barry@buyer.com" onChangeText={text=>setEmail(text)} style={styles.input} placeholder='Email Address' placeholderTextColor='#727274'></TextInput>
           <Button title="Submit" onPress={()=>validatePayment()}>Submit!</Button>
         </View>
       </ScrollView>

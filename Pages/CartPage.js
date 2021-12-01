@@ -5,8 +5,8 @@ import {CartContext} from '../Components/Context.js'
 import {Transaction} from './Transaction.js'
 import TopBar from '../Components/topBar.js';
 export default function CartPage(props){
-  const [cart,setCart] = React.useContext(CartContext);
-  if(cart==null || Object.keys(cart).length == 0){
+  const [popcart,setCart] = React.useContext(CartContext);
+  if(popcart==null || Object.keys(popcart).length == 0){
     return(
       <TouchableOpacity onPress={()=>props.navigation.navigate('BuyerHome')}>
         <Text>Sorry! Your Cart is Empty!</Text>
@@ -16,12 +16,12 @@ export default function CartPage(props){
   }
   else{
     let totalPrice = 0;
-    let keyArray = Object.keys(cart);
+    let keyArray = Object.keys(popcart);
     var tableHeaders = ['Item','Seller','Price'];
     var tableFooter = ["","Total"]
     var tableData = []
 
-    for (const [key, value] of Object.entries(cart)) {
+    for (const [key, value] of Object.entries(popcart)) {
       console.log(`${key}: ${value.seller}`);
       tableData.push([value.item,value.seller,value.price])
       console.log(value.price)

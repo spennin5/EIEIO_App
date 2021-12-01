@@ -23,10 +23,10 @@ function ItemCard(props) {
   console.log("item card cart:"+cart)
   React.useEffect(()=>{
     let refresher = navigation.addListener("focus",()=>{
-      if(cart==null){
+      //if(cart==null){
         setButtonColor('green')
         setButtonTitle("Add to Cart")
-      }
+      //}
     })
 
   },[])
@@ -40,9 +40,7 @@ function ItemCard(props) {
     setModalVisible(!modalVisible)
     setOpacityVal(1);
   }
-  function purchase(cardNum, cvv, expiration){
-    return;
-  }
+
   function addToCart(){
 
     var newItem = {'item':props.item,'seller':props.sellerName,'price':props.price};

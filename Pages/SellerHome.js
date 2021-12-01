@@ -27,6 +27,7 @@ export  default function SellerHome({navigation}){
   };
 
   React.useEffect(()=>{
+    
     let refresher = navigation.addListener("focus",()=>{
       loadItems();
       console.log(itemData)
@@ -43,7 +44,7 @@ export  default function SellerHome({navigation}){
     var tableHeaders = ['Item','Seller','Price'];
     var tableData = []
     for(const [key,value] of Object.entries(itemData)){
-      
+
       tableData.push([value.item,value.seller,value.price])
     }
     return(

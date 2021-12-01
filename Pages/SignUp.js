@@ -48,7 +48,7 @@ export default function SignUp({navigation}){
       <ImageBackground source={require("../Resources/tomatoes-2.jpeg")} resizeMode="cover" style={styles.image}>
       <KeyboardAvoidingView style={{flex: 1}} enabled={true}>
       <ScrollView style={styles.inner}>
-      
+
       <Text style={styles.fontColor}>Name: </Text>
       <View style={styles.input}>
         <TextInput color="#FFF" onChangeText={text=>setName(text)}/>
@@ -58,27 +58,27 @@ export default function SignUp({navigation}){
       <View style={styles.input}>
         <TextInput color="#FFF" onChangeText={text=>setUsername(text)}/>
       </View>
-      
+
       <Text style={styles.fontColor}>Password: </Text>
       <View style={styles.input}>
-        <TextInput color="#FFF" secureTextEntry={true} onChangeText={text=>setPassword(text)} secureTextEntity={true}/>
+        <TextInput color="#FFF" secureTextEntry={true} onChangeText={text=>setPassword(text)} />
       </View>
-      
+
       <Text style={styles.fontColor}>Confirm Password: </Text>
       <View style={styles.input}>
-        <TextInput color="#FFF" secureTextEntry={true}  onChangeText={text=>setConfirmPassword(text)} secureTextEntity={true}/>
+        <TextInput color="#FFF" secureTextEntry={true}  onChangeText={text=>setConfirmPassword(text)} />
       </View>
-      
+
       <Text style={styles.fontColor}>Email: </Text>
       <View style={styles.input}>
         <TextInput color="#FFF" onChangeText={text=>setEmail(text)}/>
       </View>
-      
+
       <Text style={styles.fontColor}>Zip Code: </Text>
       <View style={styles.input}>
         <TextInput color="#FFF" onChangeText={text=>setZipcode(text)}/>
       </View>
-      
+
       <Text style={styles.fontColor}>Profile Type: </Text>
       <View style={styles.pickerView}>
       <Picker style={styles.picker} selectedValue={selectedUserType}
@@ -93,7 +93,7 @@ export default function SignUp({navigation}){
       </View>
       </ScrollView>
       </KeyboardAvoidingView>
-      
+
       </ImageBackground>
     </View>
   );
